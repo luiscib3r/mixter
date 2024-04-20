@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "packages/mixter_ui"
+		},
+		{
+			"path": "packages/mixter_bloc"
+		}
+	],
+	"settings": {}
+}

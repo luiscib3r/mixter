@@ -1,0 +1,23 @@
+name: mixter
+description: Mixter App
+
+publish_to: none
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.3 <4.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.6
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  melos: ^5.3.0
+  very_good_analysis: ^5.1.0
+
+flutter:
+  generate: true

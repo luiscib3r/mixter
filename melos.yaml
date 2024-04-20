@@ -1,0 +1,5 @@
+name: mixter
+
+packages:
+  - .
+  - packages/**
