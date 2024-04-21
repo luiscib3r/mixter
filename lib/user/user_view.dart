@@ -26,10 +26,10 @@ class UserView extends StatelessWidget {
             SessionAuthenticatedState(user: final user) => Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(user.id),
+                  const Icon(CupertinoIcons.person_circle_fill, size: 128),
                   const SizedBox(height: 8),
                   Text(user.email),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 24),
                   AppButton(
                     text: 'Sign Out',
                     onPressed: bloc.signOut,

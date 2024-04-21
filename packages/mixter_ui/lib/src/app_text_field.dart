@@ -9,8 +9,11 @@ class AppTextField extends StatefulWidget {
     this.padding = 12,
     this.fontSize = 18,
     this.autofillHints = const [],
+    this.obscureText = false,
     this.inputType,
     this.onChanged,
+    this.suffix,
+    this.onSubmit,
   });
 
   final bool enabled;
@@ -21,6 +24,9 @@ class AppTextField extends StatefulWidget {
   final TextInputType? inputType;
   final Iterable<String> autofillHints;
   final ValueChanged<String>? onChanged;
+  final bool obscureText;
+  final Widget? suffix;
+  final VoidCallback? onSubmit;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -51,9 +57,11 @@ class _AppTextFieldState extends State<AppTextField> {
   Widget build(BuildContext context) {
     return CupertinoTextField(
       focusNode: focus,
+      obscureText: widget.obscureText,
       enabled: widget.enabled,
       autofillHints: widget.autofillHints,
       onChanged: widget.onChanged,
+      onSubmitted: (_) => widget.onSubmit?.call(),
       keyboardType: widget.inputType,
       padding: EdgeInsets.all(widget.padding),
       decoration: BoxDecoration(
@@ -63,6 +71,7 @@ class _AppTextFieldState extends State<AppTextField> {
       ),
       placeholder: widget.placeholder,
       style: TextStyle(fontSize: widget.fontSize),
+      suffix: focus.hasFocus ? widget.suffix : null,
     );
   }
 }
