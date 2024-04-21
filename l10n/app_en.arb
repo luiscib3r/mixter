@@ -1,0 +1,7 @@
+{
+  "@@locale": "en",
+  "appName": "Mixter",
+  "@appName": {
+    "description": "The name of the application"
+  }
+}

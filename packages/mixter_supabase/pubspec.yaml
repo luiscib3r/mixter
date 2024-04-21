@@ -1,0 +1,18 @@
+name: mixter_supabase
+description: Mixter Supabase
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ">=3.3.3 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  mixter_bloc:
+    path: ../mixter_bloc
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^5.1.0

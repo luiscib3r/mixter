@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "packages/mixter_bloc"
+		},
+		{
+			"path": "packages/mixter_supabase"
 		}
 	],
 	"settings": {}

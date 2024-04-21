@@ -1,0 +1,16 @@
+{
+  "configurations": [
+    {
+      "name": "Mixter [PROD]",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main_production.dart"
+    },
+    {
+      "name": "Mixter [LOCAL]",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main_local.dart"
+    }
+  ]
+}

@@ -9,3 +9,6 @@ environment:
 dev_dependencies:
   test: ^1.24.0
   very_good_analysis: ^5.1.0
+dependencies:
+  bloc: ^8.1.4
+  equatable: ^2.0.5
