@@ -1,8 +1,8 @@
 {
   "@@locale": "en",
   "appName": "Mixter",
-  "signInMessage": "Sign in with your email and password",
-  "emailAddress": "Email address",
+  "signInMessage": "Sign in to Mixter",
+  "email": "Email",
   "continueWithEmail": "Continue with email",
   "password": "Password",
   "signIn": "Sign in",

@@ -68,8 +68,6 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         password: current.password.value,
       );
 
-      print(result);
-
       switch (result) {
         case ResultFailure(failure: final failure):
           emit(SignInFailureState(failure: failure));

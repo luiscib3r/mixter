@@ -1,8 +1,8 @@
 {
   "@@locale": "es",
   "appName": "Mixter",
-  "signInMessage": "Inicia sesión con tu email y contraseña",
-  "emailAddress": "Dirección de email",
+  "signInMessage": "Inicia sesión en Mixter",
+  "email": "Email",
   "continueWithEmail": "Continuar con email",
   "password": "Contraseña",
   "signIn": "Iniciar sesión",

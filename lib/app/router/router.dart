@@ -6,6 +6,10 @@ import 'package:mixter/home/home.dart';
 import 'package:mixter/user/user.dart';
 import 'package:mixter_bloc/mixter_bloc.dart';
 
+final _authRoutes = [
+  UserPage.route,
+];
+
 GoRouter appRouterProvider(BuildContext context) {
   final bloc = context.read<SessionBloc>();
   final session = ValueNotifier(bloc.state);
@@ -30,7 +34,7 @@ GoRouter appRouterProvider(BuildContext context) {
       }
 
       if (session.value is SessionUnauthenticatedState) {
-        if (route == UserPage.route) {
+        if (_authRoutes.contains(route)) {
           return SignInPage.route;
         }
       }

@@ -15,14 +15,16 @@ class SignInForm extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          Assets.images.logo.image(width: 128),
+          const SizedBox(height: 16),
           Text(
             l10n.signInMessage,
-            style: const TextStyle(fontSize: 21),
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 32),
           AppTextField(
             padding: 16,
-            placeholder: l10n.emailAddress,
+            placeholder: l10n.email,
             inputType: TextInputType.emailAddress,
             autofillHints: const [AutofillHints.email],
             onChanged: bloc.emailChanged,
@@ -46,7 +48,7 @@ class SignInForm extends StatelessWidget {
                     };
 
                     return AppButton(
-                      onPressed: isValid ? bloc.submit : null,
+                      onPressed: () => isValid ? bloc.submit() : null,
                       text: l10n.signIn,
                     );
                   },

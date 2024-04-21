@@ -26,12 +26,9 @@ class SignInView extends StatelessWidget {
             fit: StackFit.expand,
             children: [
               const Center(
-                child: AppCard(
-                  padding: 24,
-                  child: SizedBox(
-                    width: 400,
-                    child: SignInForm(),
-                  ),
+                child: SizedBox(
+                  width: 400,
+                  child: SignInForm(),
                 ),
               ),
               if (state is SignInLoadingState)
