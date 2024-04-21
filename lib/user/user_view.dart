@@ -6,6 +6,8 @@ class UserView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<SessionBloc>();
+
     return AppScaffold(
       child: Center(
         child: BlocBuilder<SessionBloc, SessionState>(
@@ -27,6 +29,11 @@ class UserView extends StatelessWidget {
                   Text(user.id),
                   const SizedBox(height: 8),
                   Text(user.email),
+                  const SizedBox(height: 8),
+                  AppButton(
+                    text: 'Sign Out',
+                    onPressed: bloc.signOut,
+                  ),
                 ],
               ),
           },

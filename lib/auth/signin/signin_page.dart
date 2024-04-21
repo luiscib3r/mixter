@@ -7,7 +7,10 @@ class SignInPage extends GoRoute {
       : super(
           path: _path,
           pageBuilder: (context, state) => const CupertinoPage(
-            child: SignInView(),
+            child: BlocProvider(
+              create: signInBlocProvider,
+              child: SignInView(),
+            ),
           ),
         );
 

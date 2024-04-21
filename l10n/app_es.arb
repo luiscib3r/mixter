@@ -1,7 +1,12 @@
 {
   "@@locale": "es",
   "appName": "Mixter",
-  "signInMessage": "Inicia sesión con tu email",
+  "signInMessage": "Inicia sesión con tu email y contraseña",
   "emailAddress": "Dirección de email",
-  "continueWithEmail": "Continuar con email"
+  "continueWithEmail": "Continuar con email",
+  "password": "Contraseña",
+  "signIn": "Iniciar sesión",
+  "failure": "Error",
+  "unknownFailure": "Error desconocido",
+  "authFailure": "Error de autenticación"
 }

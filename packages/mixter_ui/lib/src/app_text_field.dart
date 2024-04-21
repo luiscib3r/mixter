@@ -10,6 +10,7 @@ class AppTextField extends StatefulWidget {
     this.fontSize = 18,
     this.autofillHints = const [],
     this.inputType,
+    this.onChanged,
   });
 
   final bool enabled;
@@ -19,6 +20,7 @@ class AppTextField extends StatefulWidget {
   final double fontSize;
   final TextInputType? inputType;
   final Iterable<String> autofillHints;
+  final ValueChanged<String>? onChanged;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -51,6 +53,7 @@ class _AppTextFieldState extends State<AppTextField> {
       focusNode: focus,
       enabled: widget.enabled,
       autofillHints: widget.autofillHints,
+      onChanged: widget.onChanged,
       keyboardType: widget.inputType,
       padding: EdgeInsets.all(widget.padding),
       decoration: BoxDecoration(

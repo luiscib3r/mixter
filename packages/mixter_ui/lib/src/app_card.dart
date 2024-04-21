@@ -5,16 +5,22 @@ class AppCard extends StatelessWidget {
     required this.child,
     this.borderRadius = 12,
     this.padding = 16,
+    this.width,
+    this.height,
     super.key,
   });
 
   final Widget child;
   final double borderRadius;
   final double padding;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: width,
+      height: height,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.cardBorder),

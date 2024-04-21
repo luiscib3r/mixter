@@ -1,7 +1,12 @@
 {
   "@@locale": "en",
   "appName": "Mixter",
-  "signInMessage": "Get started with your email below",
+  "signInMessage": "Sign in with your email and password",
   "emailAddress": "Email address",
-  "continueWithEmail": "Continue with email"
+  "continueWithEmail": "Continue with email",
+  "password": "Password",
+  "signIn": "Sign in",
+  "failure": "Failure",
+  "unknownFailure": "Unknown failure",
+  "authFailure": "Authentication failure"
 }

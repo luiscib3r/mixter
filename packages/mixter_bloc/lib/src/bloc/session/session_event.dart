@@ -27,3 +27,7 @@ class SessionAuthenticated extends SessionEvent {
 class SessionUnauthenticated extends SessionEvent {
   const SessionUnauthenticated();
 }
+
+class SessionSignOut extends SessionEvent {
+  const SessionSignOut();
+}

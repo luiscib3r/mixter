@@ -6,3 +6,9 @@ SessionBloc sessionBlocProvider(BuildContext context) {
     authRepository: context.read<AuthRepository>(),
   );
 }
+
+SignInBloc signInBlocProvider(BuildContext context) {
+  return SignInBloc(
+    authRepository: context.read<AuthRepository>(),
+  );
+}

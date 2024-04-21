@@ -14,6 +14,9 @@ class AppEnvironment extends Entity {
   String get supabaseAnonKey =>
       const String.fromEnvironment('SUPABASE_ANON_KEY');
 
+  String get emailRedirectUrl =>
+      const String.fromEnvironment('EMAIL_REDIRECT_URL');
+
   @override
   List<Object?> get props => [name];
 }

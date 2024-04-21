@@ -14,6 +14,7 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
     on<SessionLoad>(_onSessionLoad);
     on<SessionAuthenticated>(_onSessionAuthenticated);
     on<SessionUnauthenticated>(_onSessionUnauthenticated);
+    on<SessionSignOut>(_onSessionSignOut);
 
     _userSubscription = _authRepository.currentUserStream.listen((user) {
       if (user != null) {
@@ -60,6 +61,15 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
     Emitter<SessionState> emit,
   ) {
     emit(const SessionState.unauthenticated());
+  }
+
+  void signOut() => add(const SessionSignOut());
+  void _onSessionSignOut(
+    SessionSignOut event,
+    Emitter<SessionState> emit,
+  ) {
+    emit(const SessionState.unauthenticated());
+    _authRepository.signOut();
   }
 
   @override
