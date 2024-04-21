@@ -1,7 +1,7 @@
 {
   "@@locale": "en",
   "appName": "Mixter",
-  "@appName": {
-    "description": "The name of the application"
-  }
+  "signInMessage": "Get started with your email below",
+  "emailAddress": "Email address",
+  "continueWithEmail": "Continue with email"
 }

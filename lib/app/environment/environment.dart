@@ -1,25 +1,19 @@
 import 'package:mixter_bloc/mixter_bloc.dart';
 
-sealed class AppEnvironment extends Environment {
-  factory AppEnvironment({required String env}) => switch (env) {
-        AppEnvironment.local => const AppEnvironmentLocal(),
-        AppEnvironment.prod => const AppEnvironmentProd(),
-        _ => throw Exception('Unknown environment: $env'),
-      };
-
-  const AppEnvironment._({required super.name});
+class AppEnvironment extends Entity {
+  const AppEnvironment();
 
   static const local = 'local';
   static const prod = 'prod';
 
+  String get name => const String.fromEnvironment('env');
+
+  // SUPABASE
+  String get supabaseUrl => const String.fromEnvironment('SUPABASE_URL');
+
+  String get supabaseAnonKey =>
+      const String.fromEnvironment('SUPABASE_ANON_KEY');
+
   @override
   List<Object?> get props => [name];
-}
-
-class AppEnvironmentLocal extends AppEnvironment {
-  const AppEnvironmentLocal() : super._(name: AppEnvironment.local);
-}
-
-class AppEnvironmentProd extends AppEnvironment {
-  const AppEnvironmentProd() : super._(name: AppEnvironment.prod);
 }

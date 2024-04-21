@@ -4,13 +4,15 @@
       "name": "Mixter [PROD]",
       "type": "dart",
       "request": "launch",
-      "program": "lib/main_production.dart"
+      "program": "lib/main.dart",
+      "args": ["--dart-define-from-file", "env/production.env.json"]
     },
     {
       "name": "Mixter [LOCAL]",
       "type": "dart",
       "request": "launch",
-      "program": "lib/main_local.dart"
+      "program": "lib/main.dart",
+      "args": ["--dart-define-from-file", "env/local.env.json"]
     }
   ]
 }

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-export 'environment.dart';
+export 'user.dart';
 
 abstract class Entity extends Equatable {
   const Entity();

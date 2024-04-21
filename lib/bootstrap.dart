@@ -5,9 +5,9 @@ import 'dart:developer';
 import 'package:mixter/app/app.dart';
 import 'package:mixter/app/webpath/webpath.dart'
     if (dart.library.html) 'package:mixter/app/webpath/webpath_web.dart';
+import 'package:mixter_supabase/mixter_supabase.dart';
 
 Future<void> bootstrap({
-  required String env,
   required Widget Function() builder,
 }) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,9 +17,19 @@ Future<void> bootstrap({
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
+  // Init environment
+  const environment = AppEnvironment();
+
+  // Init Supabase
+  await setupSupabase(
+    supabaseUrl: environment.supabaseUrl,
+    supabaseAnonKey: environment.supabaseAnonKey,
+  );
+
+  // Run app
   runApp(
     RepositoryProvider<AppEnvironment>(
-      create: (context) => AppEnvironment(env: env),
+      create: (context) => environment,
       child: builder(),
     ),
   );

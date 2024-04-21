@@ -16,6 +16,7 @@ class MixterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp.router(
+      theme: appTheme,
       routerConfig: router,
       localizationsDelegates: localizationsDelegates,
       supportedLocales: supportedLocales,

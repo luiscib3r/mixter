@@ -5,10 +5,16 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MixterApp(
-      router: appRouter,
-      supportedLocales: AppLocalizations.supportedLocales,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+    return RepositoryProvider(
+      create: authRepositoryProvider,
+      child: BlocProvider(
+        create: sessionBlocProvider,
+        child: MixterApp(
+          router: appRouter,
+          supportedLocales: AppLocalizations.supportedLocales,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+        ),
+      ),
     );
   }
 }

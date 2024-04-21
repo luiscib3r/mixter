@@ -1,0 +1,7 @@
+{
+  "@@locale": "es",
+  "appName": "Mixter",
+  "signInMessage": "Inicia sesión con tu email",
+  "emailAddress": "Dirección de email",
+  "continueWithEmail": "Continuar con email"
+}

@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   mixter_bloc:
     path: ../mixter_bloc
+  supabase_flutter: ^2.5.1
 
 dev_dependencies:
   flutter_test:
