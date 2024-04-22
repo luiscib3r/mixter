@@ -6,10 +6,16 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: authRepositoryProvider,
-      child: BlocProvider(
-        create: sessionBlocProvider,
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(create: authRepositoryProvider),
+        RepositoryProvider(create: llmApiRepositoryProvider),
+      ],
+      child: MultiRepositoryProvider(
+        providers: [
+          RepositoryProvider(create: sessionBlocProvider),
+          RepositoryProvider(create: llmApiBlocProvider),
+        ],
         child: RepositoryProvider(
           create: appRouterProvider,
           child: Builder(

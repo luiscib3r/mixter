@@ -1,10 +1,9 @@
 import 'package:mixter/app/app.dart';
 import 'package:mixter/chat/chat.dart';
 import 'package:mixter/settings/settings.dart';
-import 'package:mixter/user/user.dart';
 
-class ChatsView extends StatelessWidget {
-  const ChatsView({super.key});
+class SettingsView extends StatelessWidget {
+  const SettingsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,24 +13,18 @@ class ChatsView extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          const ChatsBody(),
+          const SettingsBody(),
           Align(
             alignment: Alignment.topRight,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                AppIconButton(
-                  tooltip: l10n.settings,
-                  icon: CupertinoIcons.settings,
-                  onPressed: () => SettingsPage.open(context),
-                ),
-                const SizedBox(width: 12),
                 AppAvatar(
-                  tooltip: l10n.userProfile,
+                  tooltip: l10n.chats,
                   margin: const EdgeInsets.all(16),
-                  onPressed: () => UserPage.open(context),
+                  onPressed: () => ChatsPage.open(context),
                   child: const Icon(
-                    CupertinoIcons.person,
+                    CupertinoIcons.chat_bubble_2,
                     color: AppColors.white,
                   ),
                 ),

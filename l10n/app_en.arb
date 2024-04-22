@@ -15,5 +15,9 @@
   "welcomeMessage": "What can I help you with?",
   "startChat": "Start Chat",
   "askAnything": "Ask me anything",
-  "secureKeyNotFound": "Secure key not found"
+  "secureKeyNotFound": "Secure key not found",
+  "settings": "Settings",
+  "setupLlmProvider": "Setup your LLM provider",
+  "nullLlmProvider": "No LLM provider",
+  "nullLlmApiProviderDescription": "You must setup a LLM provider to use Mixter"
 }

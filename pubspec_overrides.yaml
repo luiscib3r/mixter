@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: mixter_bloc,mixter_supabase,mixter_ui,mixter_hive
+# melos_managed_dependency_overrides: mixter_bloc,mixter_hive,mixter_supabase,mixter_ui
 dependency_overrides:
   mixter_bloc:
     path: packages/mixter_bloc

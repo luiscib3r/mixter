@@ -21,10 +21,7 @@ class ChatsBody extends StatelessWidget {
                   const SizedBox(width: 8),
                   Text(
                     l10n.appName,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: AppTexts.title,
                   ),
                 ],
               ),

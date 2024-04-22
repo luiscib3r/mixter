@@ -1,6 +1,6 @@
 import 'package:mixter_bloc/src/entities/entities.dart';
 
-part 'llm_api_preset.dart';
+part 'llm_api_provider.dart';
 part 'llm_model.dart';
 
 enum LlmApiType {

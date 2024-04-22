@@ -7,8 +7,8 @@ enum LlmApiField {
   url,
 }
 
-sealed class LlmApiPreset extends Entity {
-  const LlmApiPreset({
+sealed class LlmApiProviderData extends Entity {
+  const LlmApiProviderData({
     required this.name,
     required this.description,
     required this.providerUrl,
@@ -35,8 +35,8 @@ sealed class LlmApiPreset extends Entity {
       ];
 }
 
-class CustomOpenAiPreset extends LlmApiPreset {
-  const CustomOpenAiPreset()
+class CustomOpenAiProvider extends LlmApiProviderData {
+  const CustomOpenAiProvider()
       : super(
           name: 'Custom OpenAI',
           description: 'Custom OpenAI API',
@@ -67,8 +67,8 @@ class CustomOpenAiPreset extends LlmApiPreset {
       );
 }
 
-class OpenAiPreset extends LlmApiPreset {
-  const OpenAiPreset()
+class OpenAiProvider extends LlmApiProviderData {
+  const OpenAiProvider()
       : super(
           name: 'OpenAI',
           description: 'The creators of the GPT-3.5 and GPT-4 models.',
@@ -103,8 +103,8 @@ class OpenAiPreset extends LlmApiPreset {
       );
 }
 
-class GroqPreset extends LlmApiPreset {
-  const GroqPreset()
+class GroqProvider extends LlmApiProviderData {
+  const GroqProvider()
       : super(
           name: 'Groq',
           description:

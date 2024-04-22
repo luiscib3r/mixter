@@ -9,4 +9,5 @@ abstract class AppColors {
   static const textFieldBorder = Color(0xFF393B3B);
   static const primary = Color(0xFFF6671A);
   static const white = Color(0xFFFFFFFF);
+  static const textSecondary = Color(0xFF8E8E93);
 }

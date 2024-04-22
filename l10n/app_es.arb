@@ -15,5 +15,9 @@
   "welcomeMessage": "¿En qué puedo ayudarte?",
   "startChat": "Iniciar chat",
   "askAnything": "Pregunta lo que quieras",
-  "secureKeyNotFound": "No se ha encontrado la clave segura"
+  "secureKeyNotFound": "No se ha encontrado la clave segura",
+  "settings": "Ajustes",
+  "setupLlmProvider": "Configurar proveedor de LLM",
+  "nullLlmProvider": "Proveedor de LLM",
+  "nullLlmApiProviderDescription": "Debe configurar un proveedor de API de LLM"
 }

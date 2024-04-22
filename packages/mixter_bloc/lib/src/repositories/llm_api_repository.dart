@@ -7,10 +7,10 @@ abstract class LlmApiRepository extends BaseRepository {
 
   Future<Result<void>> setLlmApi(LlmApi api);
 
-  Future<Result<List<LlmApiPreset>>> getLlmApiPresets() async =>
+  Future<Result<List<LlmApiProviderData>>> getLlmApiProviders() async =>
       const Result.success([
-        CustomOpenAiPreset(),
-        GroqPreset(),
-        OpenAiPreset(),
+        CustomOpenAiProvider(),
+        GroqProvider(),
+        OpenAiProvider(),
       ]);
 }

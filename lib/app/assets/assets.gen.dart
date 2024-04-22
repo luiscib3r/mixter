@@ -12,11 +12,20 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/groq.png
+  AssetGenImage get groq => const AssetGenImage('assets/images/groq.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/ollama.jpeg
+  AssetGenImage get ollama => const AssetGenImage('assets/images/ollama.jpeg');
+
+  /// File path: assets/images/openai.jpeg
+  AssetGenImage get openai => const AssetGenImage('assets/images/openai.jpeg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [logo];
+  List<AssetGenImage> get values => [groq, logo, ollama, openai];
 }
 
 class Assets {

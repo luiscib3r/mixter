@@ -4,19 +4,19 @@ import 'package:mixter_bloc/mixter_bloc.dart';
 extension FailureExtension on BuildContext {
   Future<void> showFailure(Failure failure) => AppDialog.show(
         this,
-        title: _failureTitle(failure),
-        content: Text(_failureMessage(failure), textAlign: TextAlign.center),
+        title: failureTitle(failure),
+        content: Text(failureMessage(failure), textAlign: TextAlign.center),
       );
 }
 
 extension FailureMessagesExtension on BuildContext {
-  String _failureTitle(Failure failure) => switch (failure) {
+  String failureTitle(Failure failure) => switch (failure) {
         UnknownFailure() => l10n.unknownFailure,
         AuthFailure() => l10n.authFailure,
         SecureKeyNotFound() => l10n.secureKeyNotFound,
       };
 
-  String _failureMessage(Failure failure) => switch (failure) {
+  String failureMessage(Failure failure) => switch (failure) {
         UnknownFailure(exception: final exception) => exception.toString(),
         AuthFailure(message: final message) => message,
         SecureKeyNotFound(message: final message) => message,

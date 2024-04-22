@@ -2,6 +2,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mixter_ui/mixter_ui.dart';
 
 part 'colors.dart';
+part 'texts.dart';
 
 const _base = CupertinoThemeData(
   brightness: Brightness.dark,

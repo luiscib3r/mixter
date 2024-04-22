@@ -4,12 +4,14 @@ import 'package:mixter/app/app.dart';
 import 'package:mixter/auth/auth.dart';
 import 'package:mixter/chat/chat.dart';
 import 'package:mixter/home/home.dart';
+import 'package:mixter/settings/settings.dart';
 import 'package:mixter/user/user.dart';
 import 'package:mixter_bloc/mixter_bloc.dart';
 
 final _authRoutes = [
   ChatsPage.route,
   UserPage.route,
+  SettingsPage.route,
 ];
 
 GoRouter appRouterProvider(BuildContext context) {
@@ -25,6 +27,7 @@ GoRouter appRouterProvider(BuildContext context) {
       SignInPage(),
       ChatsPage(),
       UserPage(),
+      SettingsPage(),
     ],
     refreshListenable: session,
     redirect: (context, state) {
