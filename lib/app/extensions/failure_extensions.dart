@@ -13,10 +13,12 @@ extension FailureMessagesExtension on BuildContext {
   String _failureTitle(Failure failure) => switch (failure) {
         UnknownFailure() => l10n.unknownFailure,
         AuthFailure() => l10n.authFailure,
+        SecureKeyNotFound() => l10n.secureKeyNotFound,
       };
 
   String _failureMessage(Failure failure) => switch (failure) {
         UnknownFailure(exception: final exception) => exception.toString(),
         AuthFailure(message: final message) => message,
+        SecureKeyNotFound(message: final message) => message,
       };
 }

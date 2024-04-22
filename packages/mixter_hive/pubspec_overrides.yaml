@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: mixter_bloc
+dependency_overrides:
+  mixter_bloc:
+    path: ../mixter_bloc

@@ -14,5 +14,6 @@
   "chats": "Chats",
   "welcomeMessage": "What can I help you with?",
   "startChat": "Start Chat",
-  "askAnything": "Ask me anything"
+  "askAnything": "Ask me anything",
+  "secureKeyNotFound": "Secure key not found"
 }

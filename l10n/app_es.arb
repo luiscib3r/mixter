@@ -14,5 +14,6 @@
   "chats": "Chats",
   "welcomeMessage": "¿En qué puedo ayudarte?",
   "startChat": "Iniciar chat",
-  "askAnything": "Pregunta lo que quieras"
+  "askAnything": "Pregunta lo que quieras",
+  "secureKeyNotFound": "No se ha encontrado la clave segura"
 }

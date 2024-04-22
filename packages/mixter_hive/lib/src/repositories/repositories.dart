@@ -1,15 +1,15 @@
 import 'package:mixter_bloc/mixter_bloc.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:mixter_hive/src/datasources/datasources.dart';
 
-export 'auth_repository_supabase.dart';
+export 'llm_api_repository_hive.dart';
 
-extension ErrorHandlerSupabase on BaseRepository {
+extension ErrorHandlerHive on BaseRepository {
   Future<Result<T>> process<T>(Future<T> Function() action) async {
     try {
       final result = await action();
       return Result.success(result);
-    } on AuthException catch (e) {
-      return Result.failure(Failure.auth(e.message));
+    } on HiveKeyNotFound catch (e) {
+      return Result.failure(Failure.secureKeyNotFound(e.message));
     } on Exception catch (e) {
       return Result.failure(Failure.unknown(e));
     }

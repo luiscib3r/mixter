@@ -22,6 +22,8 @@ dependencies:
   ionicons: ^0.2.2
   mixter_bloc:
     path: packages/mixter_bloc
+  mixter_hive:
+    path: packages/mixter_hive
   mixter_supabase:
     path: packages/mixter_supabase
   mixter_ui:

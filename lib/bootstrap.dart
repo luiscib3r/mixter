@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:mixter/app/app.dart';
 import 'package:mixter/app/webpath/webpath.dart'
     if (dart.library.html) 'package:mixter/app/webpath/webpath_web.dart';
+import 'package:mixter_hive/mixter_hive.dart';
 import 'package:mixter_supabase/mixter_supabase.dart';
 
 Future<void> bootstrap({
@@ -25,6 +26,9 @@ Future<void> bootstrap({
     supabaseUrl: environment.supabaseUrl,
     supabaseAnonKey: environment.supabaseAnonKey,
   );
+
+  // Init Hive
+  await setupHive();
 
   // Run app
   runApp(
