@@ -8,5 +8,7 @@
   "signIn": "Iniciar sesión",
   "failure": "Error",
   "unknownFailure": "Error desconocido",
-  "authFailure": "Error de autenticación"
+  "authFailure": "Error de autenticación",
+  "userProfile": "Perfil de usuario",
+  "chats": "Chats"
 }

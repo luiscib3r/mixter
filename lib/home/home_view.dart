@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:mixter/app/app.dart';
 import 'package:mixter/auth/auth.dart';
-import 'package:mixter/user/user.dart';
+import 'package:mixter/chat/chat.dart';
 import 'package:mixter_bloc/mixter_bloc.dart';
 
 class HomeView extends StatelessWidget {
@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
       listener: (context, state) {
         switch (state) {
           case SessionAuthenticatedState():
-            UserPage.open(context);
+            ChatsPage.open(context);
           case SessionUnauthenticatedState():
             SignInPage.open(context);
           case SessionFailureState(failure: final failure):
