@@ -19,5 +19,10 @@
   "settings": "Ajustes",
   "setupLlmProvider": "Configurar proveedor de LLM",
   "nullLlmProvider": "Proveedor de LLM",
-  "nullLlmApiProviderDescription": "Debe configurar un proveedor de API de LLM"
+  "nullLlmApiProviderDescription": "Debe configurar un proveedor de API de LLM",
+  "selectLlmModel": "Seleccionar modelo de LLM",
+  "apiKey": "API key",
+  "apiUrl": "API URL",
+  "modelId": "Model ID",
+  "save": "Guardar"
 }

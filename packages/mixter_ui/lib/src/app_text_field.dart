@@ -15,6 +15,7 @@ class AppTextField extends StatefulWidget {
     this.suffix,
     this.alwaysShowSuffix = false,
     this.onSubmit,
+    this.value,
   });
 
   final bool enabled;
@@ -29,6 +30,7 @@ class AppTextField extends StatefulWidget {
   final Widget? suffix;
   final bool alwaysShowSuffix;
   final VoidCallback? onSubmit;
+  final String? value;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -37,10 +39,15 @@ class AppTextField extends StatefulWidget {
 class _AppTextFieldState extends State<AppTextField> {
   final focus = FocusNode();
   Color borderColor = AppColors.textFieldBorder;
+  final controller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+
+    if (widget.value != null) {
+      controller.text = widget.value!;
+    }
 
     focus.addListener(() {
       if (focus.hasFocus) {
@@ -58,6 +65,7 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
     return CupertinoTextField(
+      controller: controller,
       focusNode: focus,
       obscureText: widget.obscureText,
       enabled: widget.enabled,

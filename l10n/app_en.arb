@@ -19,5 +19,10 @@
   "settings": "Settings",
   "setupLlmProvider": "Setup your LLM provider",
   "nullLlmProvider": "No LLM provider",
-  "nullLlmApiProviderDescription": "You must setup a LLM provider to use Mixter"
+  "nullLlmApiProviderDescription": "You must setup a LLM provider to use Mixter",
+  "selectLlmModel": "Select LLM model",
+  "apiKey": "API key",
+  "apiUrl": "API URL",
+  "modelId": "Model ID",
+  "save": "Save"
 }

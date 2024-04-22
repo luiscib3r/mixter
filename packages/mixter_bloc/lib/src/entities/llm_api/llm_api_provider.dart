@@ -11,12 +11,12 @@ sealed class LlmApiProviderData extends Entity {
   const LlmApiProviderData({
     required this.name,
     required this.description,
-    required this.providerUrl,
+    this.providerUrl,
   });
 
   final String name;
   final String description;
-  final String providerUrl;
+  final String? providerUrl;
 
   List<LlmApiField> get requiredFields;
   List<LlmModel> get availableModels;
@@ -40,7 +40,6 @@ class CustomOpenAiProvider extends LlmApiProviderData {
       : super(
           name: 'Custom OpenAI',
           description: 'Custom OpenAI API',
-          providerUrl: '',
         );
 
   @override
@@ -59,7 +58,7 @@ class CustomOpenAiProvider extends LlmApiProviderData {
   }) =>
       LlmApi(
         name: 'Custom OpenAI',
-        url: url!,
+        url: 'http://127.0.0.1:11435/v1',
         apiKey: apiKey,
         modelId: modelId,
         type: LlmApiType.openai,

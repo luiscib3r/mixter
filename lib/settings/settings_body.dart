@@ -7,6 +7,8 @@ class SettingsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final width = context.width * 0.7;
+
     return Column(
       children: [
         const SizedBox(height: 64),
@@ -15,15 +17,15 @@ class SettingsBody extends StatelessWidget {
           style: AppTexts.title,
         ),
         const SizedBox(height: 32),
-        const SizedBox(
-          width: 500,
-          child: LlmApiWidget(),
+        SizedBox(
+          width: width,
+          child: const LlmApiWidget(),
         ),
         const SizedBox(height: 32),
-        const Expanded(
+        Expanded(
           child: SizedBox(
-            width: 520,
-            child: LlmApiProvidersWidget(),
+            width: width,
+            child: const LlmApiSelector(),
           ),
         ),
         const SizedBox(height: 64),

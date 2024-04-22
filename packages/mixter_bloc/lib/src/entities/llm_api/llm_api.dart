@@ -39,4 +39,19 @@ class LlmApi extends Entity {
         type,
         provider,
       ];
+
+  LlmApi copyWith({
+    String? url,
+    String? apiKey,
+    String? modelId,
+  }) {
+    return LlmApi(
+      name: name,
+      url: url ?? this.url,
+      apiKey: apiKey ?? this.apiKey,
+      modelId: modelId ?? this.modelId,
+      type: type,
+      provider: provider,
+    );
+  }
 }

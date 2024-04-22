@@ -1,4 +1,5 @@
 import 'package:mixter/app/app.dart';
+import 'package:mixter/settings/settings.dart';
 import 'package:mixter_bloc/mixter_bloc.dart';
 
 class LlmApiWidget extends StatelessWidget {
@@ -7,6 +8,7 @@ class LlmApiWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final bloc = context.read<SettingsBloc>();
 
     return Container(
       height: 96,
@@ -15,73 +17,43 @@ class LlmApiWidget extends StatelessWidget {
         border: Border.all(color: AppColors.cardBorder),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: BlocBuilder<LlmApiBloc, LlmApiState>(
-        builder: (context, state) {
-          if (state is LlmApiData && state.llmApi == null) {
+      child: BlocBuilder<SettingsBloc, SettingsState>(
+        builder: (context, settings) {
+          if (settings is SettingsData && settings.llmApi != null) {
             return LlmApiTile(
-              icon: Assets.images.logo.image(),
-              name: l10n.nullLlmProvider,
-              description: l10n.nullLlmApiProviderDescription,
+              icon: settings.llmApi!.provider.icon,
+              name: settings.llmApi!.name,
+              description: settings.llmApi!.modelId.isEmpty
+                  ? l10n.selectLlmModel
+                  : settings.llmApi!.modelId,
+              suffixAction: bloc.reload,
             );
           }
 
-          return const Center(
-            child: AppLoading(),
+          return BlocBuilder<LlmApiBloc, LlmApiState>(
+            builder: (context, state) {
+              if (state is LlmApiData && state.llmApi == null) {
+                return LlmApiTile(
+                  icon: Assets.images.logo.image(),
+                  name: l10n.nullLlmProvider,
+                  description: l10n.nullLlmApiProviderDescription,
+                );
+              }
+
+              if (state is LlmApiData && state.llmApi != null) {
+                return LlmApiTile(
+                  icon: state.llmApi!.provider.icon,
+                  name: state.llmApi!.name,
+                  description: state.llmApi!.modelId,
+                );
+              }
+
+              return const Center(
+                child: AppLoading(),
+              );
+            },
           );
         },
-      ),
-    );
-  }
-}
-
-class LlmApiTile extends StatelessWidget {
-  const LlmApiTile({
-    required this.icon,
-    required this.name,
-    required this.description,
-    super.key,
-  });
-
-  final Widget icon;
-  final String name;
-  final String description;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(8),
-      child: Row(
-        children: [
-          SizedBox(
-            height: 64,
-            child: icon,
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  description,
-                  maxLines: 2,
-                  overflow: TextOverflow.clip,
-                  style: const TextStyle(
-                    color: AppColors.textSecondary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
