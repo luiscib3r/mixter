@@ -126,7 +126,7 @@ class LlmApiSelector extends StatelessWidget {
                     FadeIn(
                       duration: const Duration(milliseconds: 300),
                       child: AppButton(
-                        onPressed: () {},
+                        onPressed: bloc.save,
                         text: l10n.save,
                       ),
                     ),

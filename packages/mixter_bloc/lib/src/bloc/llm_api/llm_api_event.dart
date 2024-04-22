@@ -10,3 +10,12 @@ sealed class LlmApiEvent extends Entity {
 class LlmApiLoad extends LlmApiEvent {
   const LlmApiLoad();
 }
+
+class LlmApiSetLlmApi extends LlmApiEvent {
+  const LlmApiSetLlmApi(this.value);
+
+  final LlmApi value;
+
+  @override
+  List<Object?> get props => [value];
+}

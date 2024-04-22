@@ -7,18 +7,22 @@ part 'settings_state.dart';
 
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   SettingsBloc({
+    required LlmApiBloc llmApiBloc,
     required LlmApiRepository llmApiRepository,
-  })  : _llmApiRepository = llmApiRepository,
+  })  : _llmApiBloc = llmApiBloc,
+        _llmApiRepository = llmApiRepository,
         super(const SettingsLoading()) {
     on<SettingsLoad>(_onSettingsLoad);
     on<SettingsSelectApiProvider>(_onSettingsSelectApiProvider);
     on<SettingsSetUrl>(_onSettingsSetUrl);
     on<SettingsSetApiKey>(_onSettingsSetApiKey);
     on<SettingsSetModelId>(_onSettingsSetModelId);
+    on<SettingsSave>(_onSettingsSave);
 
     add(const SettingsLoad());
   }
 
+  final LlmApiBloc _llmApiBloc;
   final LlmApiRepository _llmApiRepository;
 
   void reload() {
@@ -62,7 +66,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   }
 
   void setUrl(String value) {
-    add(SettingsSetUrl(value));
+    add(SettingsSetUrl(value.trim()));
   }
 
   void _onSettingsSetUrl(
@@ -82,7 +86,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   }
 
   void setApiKey(String value) {
-    add(SettingsSetApiKey(value));
+    add(SettingsSetApiKey(value.trim()));
   }
 
   void _onSettingsSetApiKey(
@@ -102,7 +106,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   }
 
   void setModelId(String value) {
-    add(SettingsSetModelId(value));
+    add(SettingsSetModelId(value.trim()));
   }
 
   void _onSettingsSetModelId(
@@ -119,6 +123,19 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
           requiredFields: (state as SettingsData).requiredFields,
         ),
       );
+    }
+  }
+
+  void save() {
+    add(const SettingsSave());
+  }
+
+  void _onSettingsSave(
+    SettingsSave event,
+    Emitter<SettingsState> emit,
+  ) {
+    if (state is SettingsData && (state as SettingsData).isValid) {
+      _llmApiBloc.add(LlmApiSetLlmApi((state as SettingsData).llmApi!));
     }
   }
 }

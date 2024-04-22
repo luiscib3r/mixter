@@ -22,6 +22,7 @@ LlmApiBloc llmApiBlocProvider(BuildContext context) {
 
 SettingsBloc settingsBlocProvider(BuildContext context) {
   return SettingsBloc(
+    llmApiBloc: context.read(),
     llmApiRepository: context.read(),
   );
 }

@@ -15,6 +15,7 @@ class LlmApiBloc extends Bloc<LlmApiEvent, LlmApiState> {
         _llmApiRepository = llmApiRepository,
         super(const LlmApiLoading()) {
     on<LlmApiLoad>(_onLlmApiLoad);
+    on<LlmApiSetLlmApi>(_onSetLlmApi);
 
     _sessionSubscription = _sessionBloc.stream.listen((sessionState) {
       if (sessionState is! SessionLoadingState) {
@@ -46,6 +47,24 @@ class LlmApiBloc extends Bloc<LlmApiEvent, LlmApiState> {
     switch (result) {
       case ResultSuccess(value: final llmApi):
         emit(LlmApiData(llmApi: llmApi));
+      case ResultFailure(failure: final failure):
+        emit(LlmApiFailure(failure: failure));
+    }
+  }
+
+  void setLlmApi(LlmApi value) {
+    add(LlmApiSetLlmApi(value));
+  }
+
+  Future<void> _onSetLlmApi(
+    LlmApiSetLlmApi event,
+    Emitter<LlmApiState> emit,
+  ) async {
+    final result = await _llmApiRepository.setLlmApi(event.value);
+
+    switch (result) {
+      case ResultSuccess():
+        emit(LlmApiData(llmApi: event.value));
       case ResultFailure(failure: final failure):
         emit(LlmApiFailure(failure: failure));
     }

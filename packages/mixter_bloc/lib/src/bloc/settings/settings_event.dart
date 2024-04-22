@@ -46,3 +46,7 @@ class SettingsSetModelId extends SettingsEvent {
   @override
   List<Object?> get props => [value];
 }
+
+class SettingsSave extends SettingsEvent {
+  const SettingsSave();
+}
