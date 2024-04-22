@@ -9,7 +9,7 @@ environment:
   sdk: ">=3.3.3 <4.0.0"
 
 dependencies:
-  cupertino_icons: ^1.0.6
+  cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.5
@@ -19,6 +19,7 @@ dependencies:
     sdk: flutter
   go_router: ^13.2.4
   intl: ^0.18.1
+  ionicons: ^0.2.2
   mixter_bloc:
     path: packages/mixter_bloc
   mixter_supabase:

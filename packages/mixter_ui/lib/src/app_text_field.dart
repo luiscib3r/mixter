@@ -13,6 +13,7 @@ class AppTextField extends StatefulWidget {
     this.inputType,
     this.onChanged,
     this.suffix,
+    this.alwaysShowSuffix = false,
     this.onSubmit,
   });
 
@@ -26,6 +27,7 @@ class AppTextField extends StatefulWidget {
   final ValueChanged<String>? onChanged;
   final bool obscureText;
   final Widget? suffix;
+  final bool alwaysShowSuffix;
   final VoidCallback? onSubmit;
 
   @override
@@ -71,7 +73,7 @@ class _AppTextFieldState extends State<AppTextField> {
       ),
       placeholder: widget.placeholder,
       style: TextStyle(fontSize: widget.fontSize),
-      suffix: focus.hasFocus ? widget.suffix : null,
+      suffix: focus.hasFocus || widget.alwaysShowSuffix ? widget.suffix : null,
     );
   }
 }

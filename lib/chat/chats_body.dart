@@ -1,3 +1,4 @@
+import 'package:ionicons/ionicons.dart';
 import 'package:mixter/app/app.dart';
 
 class ChatsBody extends StatelessWidget {
@@ -26,6 +27,35 @@ class ChatsBody extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              const SizedBox(height: 72),
+              Text(
+                l10n.welcomeMessage,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 32,
+                ),
+              ),
+              const SizedBox(height: 32),
+              SizedBox(
+                width: context.width * 0.6,
+                child: AppTextField(
+                  padding: 18,
+                  fontSize: 21,
+                  placeholder: l10n.askAnything,
+                  alwaysShowSuffix: true,
+                  onSubmit: () {},
+                  suffix: Container(
+                    margin: const EdgeInsets.only(right: 8),
+                    child: AppButton(
+                      onPressed: () {},
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      text: l10n.startChat,
+                      suffixIcon: Ionicons.send,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

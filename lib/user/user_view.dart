@@ -36,7 +36,7 @@ class UserView extends StatelessWidget {
                       Text(user.email),
                       const SizedBox(height: 24),
                       AppButton(
-                        text: 'Sign Out',
+                        text: l10n.signOut,
                         onPressed: bloc.signOut,
                       ),
                     ],

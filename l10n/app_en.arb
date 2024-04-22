@@ -6,9 +6,13 @@
   "continueWithEmail": "Continue with email",
   "password": "Password",
   "signIn": "Sign in",
+  "signOut": "Sign out",
   "failure": "Failure",
   "unknownFailure": "Unknown failure",
   "authFailure": "Authentication failure",
   "userProfile": "User profile",
-  "chats": "Chats"
+  "chats": "Chats",
+  "welcomeMessage": "What can I help you with?",
+  "startChat": "Start Chat",
+  "askAnything": "Ask me anything"
 }

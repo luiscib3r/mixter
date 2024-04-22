@@ -24,12 +24,12 @@ class AppAvatar extends StatelessWidget {
     if (tooltip != null) {
       return Tooltip(
         message: tooltip,
+        waitDuration: const Duration(milliseconds: 600),
         child: _AppWidgetButton(
           onPressed: onPressed,
           margin: margin,
           size: size,
           color: color,
-          key: key,
           child: child,
         ),
       );
@@ -40,7 +40,6 @@ class AppAvatar extends StatelessWidget {
       margin: margin,
       size: size,
       color: color,
-      key: key,
       child: child,
     );
   }
@@ -53,7 +52,6 @@ class _AppWidgetButton extends StatelessWidget {
     required this.size,
     required this.color,
     required this.child,
-    super.key,
   });
 
   final VoidCallback? onPressed;
