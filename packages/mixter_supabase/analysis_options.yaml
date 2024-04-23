@@ -1,1 +1,11 @@
 include: ../../analysis_options.yaml
+
+linter:
+  rules:
+    overridden_fields: false
+
+analyzer:
+  exclude:
+    - lib/**/*.g.dart
+  errors:
+    invalid_annotation_target: ignore

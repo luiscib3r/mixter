@@ -6,3 +6,18 @@ sealed class ChatsEvent extends Entity {
   @override
   List<Object?> get props => [];
 }
+
+class ChatsLoad extends ChatsEvent {
+  const ChatsLoad();
+}
+
+class ChatsCreateConversation extends ChatsEvent {
+  const ChatsCreateConversation({
+    required this.message,
+  });
+
+  final String message;
+
+  @override
+  List<Object?> get props => [message];
+}

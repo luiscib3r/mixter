@@ -24,5 +24,6 @@
   "apiKey": "API key",
   "apiUrl": "API URL",
   "modelId": "Model ID",
-  "save": "Guardar"
+  "save": "Guardar",
+  "creationFailed": "Error al crear"
 }

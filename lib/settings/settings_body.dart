@@ -7,7 +7,7 @@ class SettingsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final width = context.width * 0.7;
+    final width = context.width * 0.8;
 
     return Column(
       children: [
@@ -28,7 +28,7 @@ class SettingsBody extends StatelessWidget {
             child: const LlmApiSelector(),
           ),
         ),
-        const SizedBox(height: 64),
+        const SizedBox(height: 8),
       ],
     );
   }

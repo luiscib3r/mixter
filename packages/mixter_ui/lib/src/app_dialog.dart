@@ -22,9 +22,12 @@ class AppDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const minWidth = 300.0;
+    final width = context.width * 0.25;
+
     return Center(
       child: AppCard(
-        width: context.width * 0.25,
+        width: width < minWidth ? minWidth : width,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

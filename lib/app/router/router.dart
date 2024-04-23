@@ -26,6 +26,7 @@ GoRouter appRouterProvider(BuildContext context) {
       HomePage(),
       SignInPage(),
       ChatsPage(),
+      ChatPage(),
       UserPage(),
       SettingsPage(),
     ],

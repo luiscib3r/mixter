@@ -6,6 +6,7 @@ sealed class Failure extends Entity {
   const factory Failure.unknown(Exception exception) = UnknownFailure;
   const factory Failure.auth(String message) = AuthFailure;
   const factory Failure.secureKeyNotFound(String message) = SecureKeyNotFound;
+  const factory Failure.modelCreation(String message) = ModelCreationFailure;
 
   @override
   bool? get stringify => true;
@@ -32,6 +33,14 @@ class AuthFailure extends Failure {
 class SecureKeyNotFound extends Failure {
   const SecureKeyNotFound(this.message);
 
+  final String message;
+
+  @override
+  List<Object?> get props => [message];
+}
+
+class ModelCreationFailure extends Failure {
+  const ModelCreationFailure(this.message);
   final String message;
 
   @override

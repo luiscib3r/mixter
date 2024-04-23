@@ -16,6 +16,7 @@ class AppTextField extends StatefulWidget {
     this.alwaysShowSuffix = false,
     this.onSubmit,
     this.value,
+    this.controller,
   });
 
   final bool enabled;
@@ -31,6 +32,7 @@ class AppTextField extends StatefulWidget {
   final bool alwaysShowSuffix;
   final VoidCallback? onSubmit;
   final String? value;
+  final TextEditingController? controller;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -39,7 +41,7 @@ class AppTextField extends StatefulWidget {
 class _AppTextFieldState extends State<AppTextField> {
   final focus = FocusNode();
   Color borderColor = AppColors.textFieldBorder;
-  final controller = TextEditingController();
+  late final controller = widget.controller ?? TextEditingController();
 
   @override
   void initState() {
@@ -60,6 +62,12 @@ class _AppTextFieldState extends State<AppTextField> {
         });
       }
     });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override

@@ -8,8 +8,14 @@ class ChatsPage extends GoRoute {
   ChatsPage()
       : super(
           path: _path,
-          pageBuilder: (context, state) => const CupertinoPage(
-            child: ChatsView(),
+          pageBuilder: (context, state) => CupertinoPage(
+            child: RepositoryProvider(
+              create: chatRepositoryProvider,
+              child: const BlocProvider(
+                create: chatsBlocProvider,
+                child: ChatsView(),
+              ),
+            ),
           ),
         );
 

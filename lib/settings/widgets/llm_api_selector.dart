@@ -73,10 +73,9 @@ class LlmApiSelector extends StatelessWidget {
                   child: GridView.builder(
                     shrinkWrap: true,
                     itemCount: models.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      childAspectRatio: 1.8,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: context.width < 1000 ? 2 : 3,
+                      childAspectRatio: 2.2,
                     ),
                     itemBuilder: (context, index) {
                       final model = models[index];
@@ -84,11 +83,14 @@ class LlmApiSelector extends StatelessWidget {
                       return ZoomIn(
                         delay: Duration(milliseconds: index * 100),
                         duration: const Duration(milliseconds: 300),
-                        child: AppWidgetButton(
-                          onPressed: () => bloc.setModelId(model.id),
-                          child: LlmModelTile(
-                            icon: llmApi.provider.icon,
-                            model: model,
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 12, bottom: 12),
+                          child: AppWidgetButton(
+                            onPressed: () => bloc.setModelId(model.id),
+                            child: LlmModelTile(
+                              icon: llmApi.provider.icon,
+                              model: model,
+                            ),
                           ),
                         ),
                       );

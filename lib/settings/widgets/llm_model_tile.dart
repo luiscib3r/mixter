@@ -16,61 +16,58 @@ class LlmModelTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final formatter = NumberFormat.decimalPattern('en_US');
 
-    return Container(
-      margin: const EdgeInsets.all(4),
-      child: AppCard(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                SizedBox(
-                  height: 36,
-                  width: 36,
-                  child: icon,
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        model.name,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        model.id,
-                        style: const TextStyle(color: AppColors.textSecondary),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    model.description,
-                    overflow: TextOverflow.clip,
-                    maxLines: 3,
-                    style: const TextStyle(
-                      color: AppColors.white,
+    return AppCard(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              SizedBox(
+                height: 36,
+                width: 36,
+                child: icon,
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      model.name,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                  ),
+                    const SizedBox(height: 4),
+                    Text(
+                      model.id,
+                      style: const TextStyle(color: AppColors.textSecondary),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text('${formatter.format(model.contextWindow)} tokens'),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          // const SizedBox(height: 12),
+          // Row(
+          //   children: [
+          //     Expanded(
+          //       child: Text(
+          //         model.description,
+          //         overflow: TextOverflow.clip,
+          //         maxLines: 2,
+          //         style: const TextStyle(
+          //           color: AppColors.white,
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          const Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text('${formatter.format(model.contextWindow)} tokens'),
+            ],
+          ),
+        ],
       ),
     );
   }

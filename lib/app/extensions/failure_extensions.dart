@@ -14,11 +14,13 @@ extension FailureMessagesExtension on BuildContext {
         UnknownFailure() => l10n.unknownFailure,
         AuthFailure() => l10n.authFailure,
         SecureKeyNotFound() => l10n.secureKeyNotFound,
+        ModelCreationFailure() => l10n.creationFailed,
       };
 
   String failureMessage(Failure failure) => switch (failure) {
         UnknownFailure(exception: final exception) => exception.toString(),
         AuthFailure(message: final message) => message,
         SecureKeyNotFound(message: final message) => message,
+        ModelCreationFailure(message: final message) => message,
       };
 }

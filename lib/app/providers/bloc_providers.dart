@@ -26,3 +26,9 @@ SettingsBloc settingsBlocProvider(BuildContext context) {
     llmApiRepository: context.read(),
   );
 }
+
+ChatsBloc chatsBlocProvider(BuildContext context) {
+  return ChatsBloc(
+    chatRepository: context.read(),
+  );
+}

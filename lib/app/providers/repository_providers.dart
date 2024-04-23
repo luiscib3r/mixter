@@ -10,3 +10,7 @@ AuthRepository authRepositoryProvider(BuildContext context) {
 LlmApiRepository llmApiRepositoryProvider(BuildContext context) {
   return const LlmApiRepositoryHive();
 }
+
+ChatRepository chatRepositoryProvider(BuildContext context) {
+  return const ChatRepositorySupabase();
+}
