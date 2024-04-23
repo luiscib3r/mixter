@@ -35,7 +35,7 @@ class LlmApiBloc extends Bloc<LlmApiEvent, LlmApiState> {
     LlmApiLoad event,
     Emitter<LlmApiState> emit,
   ) async {
-    if (_sessionBloc.state is! SessionAuthenticated) {
+    if (_sessionBloc.state is! SessionAuthenticatedState) {
       emit(const LlmApiData());
       return;
     }

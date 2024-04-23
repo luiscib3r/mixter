@@ -15,12 +15,6 @@ class _ChatInitialInputState extends State<ChatInitialInput> {
   final controller = TextEditingController();
 
   @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final bloc = context.read<ChatsBloc>();
