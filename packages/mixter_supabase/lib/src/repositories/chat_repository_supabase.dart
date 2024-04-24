@@ -14,4 +14,12 @@ class ChatRepositorySupabase extends ChatRepository {
   @override
   Future<Result<List<ChatConversation>>> getChatConversations() =>
       process(_chatDataSource.getChatConversations);
+
+  @override
+  Future<Result<ChatConversation>> getChatConversation(String chatId) =>
+      process(() => _chatDataSource.getChatConversation(chatId));
+
+  @override
+  Future<Result<List<ChatMessage>>> getChatMessages(String chatId) =>
+      process(() => _chatDataSource.getChatMessages(chatId));
 }

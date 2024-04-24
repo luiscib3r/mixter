@@ -8,8 +8,12 @@ class ChatPage extends GoRoute {
   ChatPage()
       : super(
           path: _path,
-          pageBuilder: (context, state) => const CupertinoPage(
-            child: ChatView(),
+          pageBuilder: (context, state) => CupertinoPage(
+            child: BlocProvider(
+              create: (context) => chatBlocProvider(context)
+                ..load(state.pathParameters['chatId']!),
+              child: const ChatView(),
+            ),
           ),
         );
 

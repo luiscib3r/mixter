@@ -1,17 +1,26 @@
 import 'package:mixter/app/app.dart';
 import 'package:mixter/chat/chats_page.dart';
+import 'package:mixter_bloc/mixter_bloc.dart';
 
 class ChatAppBar extends StatelessWidget {
   const ChatAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    final l10n = context.l10n;
+
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        ChatAppBarLeading(),
-        Text('Chat Title'),
-        ChatAppBarTrail(),
+        const ChatAppBarLeading(),
+        BlocBuilder<ChatBloc, ChatState>(
+          builder: (context, state) => switch (state) {
+            ChatData(conversation: final conversation) =>
+              Text(conversation.title ?? l10n.untitled),
+            _ => const SizedBox.shrink(),
+          },
+        ),
+        const ChatAppBarTrail(),
       ],
     );
   }

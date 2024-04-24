@@ -32,3 +32,9 @@ ChatsBloc chatsBlocProvider(BuildContext context) {
     chatRepository: context.read(),
   );
 }
+
+ChatBloc chatBlocProvider(BuildContext context) {
+  return ChatBloc(
+    chatRepository: context.read(),
+  );
+}
