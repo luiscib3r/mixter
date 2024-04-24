@@ -7,13 +7,14 @@ class ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const maxWidth = 650.0;
+    const maxWidth = 682.0;
     final width = context.width < maxWidth ? context.width : maxWidth;
 
     return AppScaffold(
       child: Stack(
         fit: StackFit.expand,
         children: [
+          const ChatBody(),
           Align(
             alignment: Alignment.bottomCenter,
             child: SizedBox(

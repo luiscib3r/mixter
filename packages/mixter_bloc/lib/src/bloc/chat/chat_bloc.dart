@@ -11,6 +11,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         super(const ChatLoading()) {
     on<ChatLoadConversation>(_onLoadConversation);
     on<ChatLoadMessages>(_onLoadMessages);
+    on<ChatDeleteChat>(_onDeleteChat);
   }
 
   final ChatRepository _chatRepository;
@@ -52,6 +53,19 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         );
       case ResultFailure(failure: final failure):
         emit(ChatFailure(failure: failure));
+    }
+  }
+
+  void delete() => add(const ChatDeleteChat());
+
+  Future<void> _onDeleteChat(
+    ChatDeleteChat event,
+    Emitter<ChatState> emit,
+  ) async {
+    if (state is ChatData) {
+      await _chatRepository.deleteChat((state as ChatData).conversation.id);
+
+      emit(const ChatDeleted());
     }
   }
 }

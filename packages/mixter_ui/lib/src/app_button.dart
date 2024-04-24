@@ -7,6 +7,7 @@ class AppButton extends StatelessWidget {
     this.padding,
     this.onPressed,
     this.suffixIcon,
+    this.minSize = 44,
     super.key,
   });
 
@@ -15,6 +16,7 @@ class AppButton extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final String text;
   final IconData? suffixIcon;
+  final double minSize;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class AppButton extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: CupertinoButton(
         color: color,
+        minSize: minSize,
         onPressed: onPressed,
         borderRadius: BorderRadius.circular(12),
         padding: padding,

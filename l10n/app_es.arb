@@ -27,5 +27,10 @@
   "save": "Guardar",
   "creationFailed": "Error al crear",
   "untitled": "Sin título",
-  "messageTo": "Mensaje para"
+  "messageTo": "Mensaje para",
+  "reload": "Recargar",
+  "deleteChatQ": "¿Eliminar chat?",
+  "deleteChatQuestion": "¿Estás seguro de que quieres eliminar este chat?",
+  "cancel": "Cancelar",
+  "delete": "Eliminar"
 }

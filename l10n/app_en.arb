@@ -27,5 +27,10 @@
   "save": "Save",
   "creationFailed": "Creation failed",
   "untitled": "Untitled",
-  "messageTo": "Message to"
+  "messageTo": "Message to",
+  "reload": "Reload",
+  "deleteChatQ": "Delete chat?",
+  "deleteChatQuestion": "Are you sure you want to delete this chat?",
+  "cancel": "Cancel",
+  "delete": "Delete"
 }

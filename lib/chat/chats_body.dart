@@ -8,7 +8,7 @@ class ChatsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    const maxWidth = 650.0;
+    const maxWidth = 682.0;
     final width = context.width < maxWidth ? context.width : maxWidth;
 
     return AppScaffold(

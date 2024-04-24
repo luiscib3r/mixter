@@ -34,3 +34,7 @@ class ChatFailure extends ChatState {
   @override
   List<Object?> get props => [failure];
 }
+
+class ChatDeleted extends ChatState {
+  const ChatDeleted();
+}

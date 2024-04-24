@@ -10,4 +10,5 @@ abstract class AppColors {
   static const primary = Color(0xFFF6671A);
   static const white = Color(0xFFFFFFFF);
   static const textSecondary = Color(0xFF8E8E93);
+  static const disabled = CupertinoColors.quaternarySystemFill;
 }

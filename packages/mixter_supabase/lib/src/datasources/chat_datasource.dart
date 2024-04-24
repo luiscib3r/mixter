@@ -9,13 +9,21 @@ class ChatDataSource extends SupabaseDataSource {
     final data =
         await supabase.from('chat_conversation').insert({}).select().single();
 
+    await createMessage(
+      conversationId: data['id'] as String,
+      message: message,
+      role: UserRole.user,
+      returnModel: false,
+    );
+
     return ChatConversationModel.fromJson(data);
   }
 
-  Future<ChatMessageModel> createMessage({
+  Future<ChatMessageModel?> createMessage({
     required String conversationId,
     required String message,
     required UserRole role,
+    bool returnModel = true,
   }) async {
     final model = ChatMessageModel(
       id: '',
@@ -30,10 +38,17 @@ class ChatDataSource extends SupabaseDataSource {
       ..remove('id')
       ..remove('user_id');
 
-    final data =
-        await supabase.from('chat_message').insert(payload).select().single();
+    final request = supabase.from('chat_message').insert(payload);
 
-    return ChatMessageModel.fromJson(data);
+    if (returnModel) {
+      final data = await request.select().single();
+
+      return ChatMessageModel.fromJson(data);
+    } else {
+      await request;
+    }
+    
+    return null;
   }
 
   Future<List<ChatConversationModel>> getChatConversations() async {
@@ -54,7 +69,12 @@ class ChatDataSource extends SupabaseDataSource {
     final data = await supabase
         .from('chat_message')
         .select()
-        .eq('chat_conversation_id', chatId);
+        .eq('chat_conversation_id', chatId)
+        .order('created_at', ascending: false);
     return data.map(ChatMessageModel.fromJson).toList();
+  }
+
+  Future<void> deleteChat(String chatId) async {
+    await supabase.from('chat_conversation').delete().eq('id', chatId);
   }
 }

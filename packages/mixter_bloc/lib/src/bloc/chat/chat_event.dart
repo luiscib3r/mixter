@@ -21,3 +21,7 @@ class ChatLoadConversation extends ChatEvent {
 class ChatLoadMessages extends ChatEvent {
   const ChatLoadMessages();
 }
+
+class ChatDeleteChat extends ChatEvent {
+  const ChatDeleteChat();
+}
