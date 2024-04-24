@@ -1,6 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:mixter/app/app.dart';
 import 'package:mixter/chat/chat.dart';
+import 'package:mixter/settings/settings.dart';
+import 'package:mixter_bloc/mixter_bloc.dart';
 
 class ChatPage extends GoRoute {
   ChatPage()
@@ -22,6 +24,12 @@ class ChatPage extends GoRoute {
     BuildContext context, {
     required String chatId,
   }) {
-    context.go(route(chatId: chatId));
+    final llmApiState = context.read<LlmApiBloc>().state;
+
+    if (llmApiState is LlmApiData && llmApiState.llmApi != null) {
+      context.go(route(chatId: chatId));
+    } else {
+      SettingsPage.open(context);
+    }
   }
 }

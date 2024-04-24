@@ -25,5 +25,7 @@
   "apiUrl": "API URL",
   "modelId": "Model ID",
   "save": "Guardar",
-  "creationFailed": "Error al crear"
+  "creationFailed": "Error al crear",
+  "untitled": "Sin título",
+  "messageTo": "Mensaje para"
 }

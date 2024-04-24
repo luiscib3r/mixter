@@ -1,5 +1,6 @@
 import 'package:mixter/app/app.dart';
 import 'package:mixter/chat/chat.dart';
+import 'package:mixter_bloc/mixter_bloc.dart';
 
 class ChatsBody extends StatelessWidget {
   const ChatsBody({super.key});
@@ -40,6 +41,38 @@ class ChatsBody extends StatelessWidget {
               SizedBox(
                 width: width,
                 child: const ChatInitialInput(),
+              ),
+              const SizedBox(height: 32),
+              SizedBox(
+                width: width,
+                child: BlocBuilder<ChatsBloc, ChatsState>(
+                  builder: (context, state) => switch (state) {
+                    ChatsLoading() => const Center(
+                        child: AppLoading(),
+                      ),
+                    ChatsData(chats: final chats) => Column(
+                        children:
+                            chats.map((chat) => ChatTile(chat: chat)).toList(),
+                      ),
+                    ChatsFailure(failure: final failure) => Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              CupertinoIcons.exclamationmark_triangle,
+                              size: 48,
+                              color: AppColors.primary,
+                            ),
+                            const SizedBox(height: 16),
+                            Text(
+                              context.failureMessage(failure),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ),
+                  },
+                ),
               ),
             ],
           ),

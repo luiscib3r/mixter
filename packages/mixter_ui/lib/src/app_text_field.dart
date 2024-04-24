@@ -13,9 +13,11 @@ class AppTextField extends StatefulWidget {
     this.inputType,
     this.onChanged,
     this.suffix,
+    this.suffixMode,
     this.alwaysShowSuffix = false,
     this.onSubmit,
     this.value,
+    this.decoration,
     this.controller,
   });
 
@@ -30,8 +32,10 @@ class AppTextField extends StatefulWidget {
   final bool obscureText;
   final Widget? suffix;
   final bool alwaysShowSuffix;
+  final OverlayVisibilityMode? suffixMode;
   final VoidCallback? onSubmit;
   final String? value;
+  final BoxDecoration? decoration;
   final TextEditingController? controller;
 
   @override
@@ -82,13 +86,15 @@ class _AppTextFieldState extends State<AppTextField> {
       onSubmitted: (_) => widget.onSubmit?.call(),
       keyboardType: widget.inputType,
       padding: EdgeInsets.all(widget.padding),
-      decoration: BoxDecoration(
-        border: Border.all(color: borderColor),
-        borderRadius: BorderRadius.circular(widget.borderRadius),
-        color: AppColors.textField,
-      ),
+      decoration: widget.decoration ??
+          BoxDecoration(
+            border: Border.all(color: borderColor),
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+            color: AppColors.textField,
+          ),
       placeholder: widget.placeholder,
       style: TextStyle(fontSize: widget.fontSize),
+      suffixMode: widget.suffixMode ?? OverlayVisibilityMode.always,
       suffix: focus.hasFocus || widget.alwaysShowSuffix ? widget.suffix : null,
     );
   }

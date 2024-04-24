@@ -4,4 +4,6 @@ abstract class ChatRepository extends BaseRepository {
   const ChatRepository();
 
   Future<Result<ChatConversation>> createChatConversation(String message);
+
+  Future<Result<List<ChatConversation>>> getChatConversations();
 }

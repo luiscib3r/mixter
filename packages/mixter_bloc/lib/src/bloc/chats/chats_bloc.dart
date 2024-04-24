@@ -29,9 +29,14 @@ class ChatsBloc extends Bloc<ChatsEvent, ChatsState> {
   ) async {
     emit(const ChatsLoading());
 
-    await Future<void>.delayed(const Duration(seconds: 2));
+    final result = await _chatRepository.getChatConversations();
 
-    emit(const ChatsData());
+    switch (result) {
+      case ResultSuccess(value: final chatConversations):
+        emit(ChatsData(chats: chatConversations));
+      case ResultFailure(failure: final failure):
+        emit(ChatsFailure(failure: failure));
+    }
   }
 
   void createConversation(String message) {

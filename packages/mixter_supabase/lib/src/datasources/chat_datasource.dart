@@ -50,4 +50,9 @@ class ChatDataSource extends SupabaseDataSource {
 
     throw const ModelCreationException('Failed to create chat message');
   }
+
+  Future<List<ChatConversationModel>> getChatConversations() async {
+    final data = await supabase.from('chat_conversation').select();
+    return data.map(ChatConversationModel.fromJson).toList();
+  }
 }

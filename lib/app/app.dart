@@ -7,3 +7,4 @@ export 'extensions/extensions.dart';
 export 'providers/app_providers.dart';
 export 'router/router.dart';
 export 'view/app.dart';
+export 'widgets/widgets.dart';
