@@ -40,18 +40,20 @@ class ChatMessageTile extends StatelessWidget {
                     children: [
                       if (message.role == UserRole.user) ...[
                         Container(
-                          width: 36,
-                          height: 36,
-                          decoration: BoxDecoration(
-                            color: AppColors.primary,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: const Icon(
-                            CupertinoIcons.person,
-                            color: AppColors.white,
+                          margin: const EdgeInsets.only(top: 16, left: 16),
+                          child: Container(
+                            width: 36,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              color: AppColors.primary,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(
+                              CupertinoIcons.person,
+                              color: AppColors.white,
+                            ),
                           ),
                         ),
-                        const SizedBox(width: 16),
                       ],
                       Expanded(
                         child: Container(

@@ -17,6 +17,7 @@ class ChatBody extends StatelessWidget {
             ChatBodyFailure(failure: failure),
           ChatData(messages: final messages) => Column(
               children: [
+                const SizedBox(height: 72),
                 Expanded(
                   child: ListView.builder(
                     reverse: true,
