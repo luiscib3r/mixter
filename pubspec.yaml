@@ -16,6 +16,7 @@ dependencies:
   flutter_bloc: ^8.1.5
   flutter_localizations:
     sdk: flutter
+  flutter_markdown: ^0.7.1
   flutter_web_plugins:
     sdk: flutter
   go_router: ^13.2.4

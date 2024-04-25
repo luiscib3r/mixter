@@ -52,7 +52,7 @@ class ChatsBody extends StatelessWidget {
                       ),
                     ChatsData(chats: final chats) => Column(
                         children:
-                            chats.map((chat) => ChatTile(chat: chat)).toList(),
+                            chats.map((chat) => ChatTitle(chat: chat)).toList(),
                       ),
                     ChatsFailure(failure: final failure) => Center(
                         child: Column(

@@ -2,12 +2,20 @@ import 'package:animate_do/animate_do.dart';
 import 'package:mixter/app/app.dart';
 import 'package:mixter_bloc/mixter_bloc.dart';
 
-class ChatMessageInput extends StatelessWidget {
+class ChatMessageInput extends StatefulWidget {
   const ChatMessageInput({super.key});
+
+  @override
+  State<ChatMessageInput> createState() => _ChatMessageInputState();
+}
+
+class _ChatMessageInputState extends State<ChatMessageInput> {
+  final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final bloc = context.read<ChatBloc>();
 
     return SlideInUp(
       duration: const Duration(milliseconds: 300),
@@ -45,13 +53,25 @@ class ChatMessageInput extends StatelessWidget {
         child: Column(
           children: [
             AppTextField(
+              controller: controller,
               placeholder: '${l10n.messageTo} ${l10n.appName}',
               decoration: const BoxDecoration(),
               suffixMode: OverlayVisibilityMode.editing,
+              onSubmit: () {
+                if (controller.text.isNotEmpty) {
+                  bloc.sendMessage(controller.text);
+                  controller.clear();
+                }
+              },
               suffix: Container(
                 margin: const EdgeInsets.only(right: 4),
                 child: AppWidgetButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (controller.text.isNotEmpty) {
+                      bloc.sendMessage(controller.text);
+                      controller.clear();
+                    }
+                  },
                   child: Container(
                     width: 32,
                     height: 32,

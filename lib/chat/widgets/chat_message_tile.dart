@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:mixter/app/app.dart';
 import 'package:mixter_bloc/mixter_bloc.dart';
 import 'package:mixter_ui/mixter_ui.dart';
@@ -52,9 +53,25 @@ class ChatMessageTile extends StatelessWidget {
                   const SizedBox(width: 16),
                 ],
                 Expanded(
-                  child: Text(
-                    message.content,
-                    overflow: TextOverflow.clip,
+                  child: MarkdownBody(
+                    data: message.content,
+                    styleSheet: MarkdownStyleSheet(
+                      p: CupertinoTheme.of(context).textTheme.textStyle,
+                      listBullet:
+                          CupertinoTheme.of(context).textTheme.textStyle,
+                      code: CupertinoTheme.of(context).textTheme.textStyle,
+                      codeblockDecoration: BoxDecoration(
+                        color: AppColors.codeBackground,
+                        border: const Border(
+                          left: BorderSide(
+                            color: AppColors.cardBorder,
+                            width: 4,
+                          ),
+                        ),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      codeblockPadding: const EdgeInsets.all(16),
+                    ),
                   ),
                 ),
               ],

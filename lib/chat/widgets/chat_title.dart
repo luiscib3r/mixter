@@ -2,8 +2,8 @@ import 'package:mixter/app/app.dart';
 import 'package:mixter/chat/chat.dart';
 import 'package:mixter_bloc/mixter_bloc.dart';
 
-class ChatTile extends StatelessWidget {
-  const ChatTile({
+class ChatTitle extends StatelessWidget {
+  const ChatTitle({
     required this.chat,
     super.key,
   });

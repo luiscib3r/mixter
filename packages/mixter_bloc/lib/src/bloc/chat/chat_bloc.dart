@@ -27,6 +27,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       transformer: sequential(),
     );
     on<FinishGenerationMessage>(_onFinishGenerationMessage);
+    on<ChatSendMessage>(_onSendMessage);
   }
 
   final ChatRepository _chatRepository;
@@ -132,7 +133,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       _chatRepository.conversationInit((state as ChatData).conversation.id);
     }
 
-    final stream = _llmRepository.generateChatResponse(messages);
+    final stream =
+        _llmRepository.generateChatResponse(messages.reversed.toList());
 
     _responseSubscription = stream.listen(
       (response) {
@@ -187,6 +189,36 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         );
       case ResultFailure():
         add(ChatLoadConversation(chatId: chatId));
+    }
+  }
+
+  void sendMessage(String message) => add(ChatSendMessage(message));
+
+  Future<void> _onSendMessage(
+    ChatSendMessage event,
+    Emitter<ChatState> emit,
+  ) async {
+    if (state is! ChatData) return;
+
+    final chatId = (state as ChatData).conversation.id;
+
+    final result = await _chatRepository.sendMessage(
+      chatId: chatId,
+      message: event.message,
+      role: UserRole.user,
+    );
+
+    switch (result) {
+      case ResultSuccess(value: final message):
+        emit(
+          ChatData(
+            conversation: (state as ChatData).conversation,
+            messages: [message, ...(state as ChatData).messages],
+          ),
+        );
+        add(const GenerateChatResponse());
+      case ResultFailure(failure: final failure):
+        emit(ChatFailure(failure: failure));
     }
   }
 
