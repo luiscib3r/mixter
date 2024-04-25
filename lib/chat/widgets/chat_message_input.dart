@@ -52,41 +52,46 @@ class _ChatMessageInputState extends State<ChatMessageInput> {
         ),
         child: Column(
           children: [
-            AppTextField(
-              controller: controller,
-              placeholder: '${l10n.messageTo} ${l10n.appName}',
-              decoration: const BoxDecoration(),
-              suffixMode: OverlayVisibilityMode.editing,
-              onSubmit: () {
-                if (controller.text.isNotEmpty) {
-                  bloc.sendMessage(controller.text);
-                  controller.clear();
-                }
-              },
-              suffix: Container(
-                margin: const EdgeInsets.only(right: 4),
-                child: AppWidgetButton(
-                  onPressed: () {
+            BlocBuilder<ChatBloc, ChatState>(
+              builder: (context, state) {
+                return AppTextField(
+                  enabled: state is ChatData && !state.isGenerating,
+                  controller: controller,
+                  placeholder: '${l10n.messageTo} ${l10n.appName}',
+                  decoration: const BoxDecoration(),
+                  suffixMode: OverlayVisibilityMode.editing,
+                  onSubmit: () {
                     if (controller.text.isNotEmpty) {
                       bloc.sendMessage(controller.text);
                       controller.clear();
                     }
                   },
-                  child: Container(
-                    width: 32,
-                    height: 32,
-                    decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Icon(
-                      CupertinoIcons.arrow_up,
-                      color: AppColors.white,
-                      size: 16,
+                  suffix: Container(
+                    margin: const EdgeInsets.only(right: 4),
+                    child: AppWidgetButton(
+                      onPressed: () {
+                        if (controller.text.isNotEmpty) {
+                          bloc.sendMessage(controller.text);
+                          controller.clear();
+                        }
+                      },
+                      child: Container(
+                        width: 32,
+                        height: 32,
+                        decoration: BoxDecoration(
+                          color: AppColors.primary,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Icon(
+                          CupertinoIcons.arrow_up,
+                          color: AppColors.white,
+                          size: 16,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
             const Spacer(),
             BlocBuilder<LlmApiBloc, LlmApiState>(

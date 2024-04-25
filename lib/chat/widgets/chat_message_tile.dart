@@ -76,6 +76,13 @@ class ChatMessageTile extends StatelessWidget {
                               listBullet: CupertinoTheme.of(context)
                                   .textTheme
                                   .textStyle,
+                              codeblockDecoration: const BoxDecoration(
+                                color: AppColors.card,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  topRight: Radius.circular(16),
+                                ),
+                              ),
                             ),
                           ),
                         ),
