@@ -58,7 +58,10 @@ class ChatDataSource extends SupabaseDataSource {
   }
 
   Future<List<ChatConversationModel>> getChatConversations() async {
-    final data = await supabase.from('chat_conversation').select();
+    final data = await supabase
+        .from('chat_conversation')
+        .select()
+        .order('created_at', ascending: false);
     return data.map(ChatConversationModel.fromJson).toList();
   }
 
