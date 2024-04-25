@@ -25,4 +25,11 @@ class ChatRepositorySupabase extends ChatRepository {
 
   @override
   Future<void> deleteChat(String chatId) => _chatDataSource.deleteChat(chatId);
+
+  @override
+  Future<Result<ChatConversation>> updateTitle({
+    required String chatId,
+    required String title,
+  }) =>
+      process(() => _chatDataSource.updateTitle(chatId: chatId, title: title));
 }

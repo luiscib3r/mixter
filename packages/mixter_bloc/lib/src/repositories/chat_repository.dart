@@ -10,5 +10,11 @@ abstract class ChatRepository extends BaseRepository {
   Future<Result<ChatConversation>> getChatConversation(String chatId);
 
   Future<Result<List<ChatMessage>>> getChatMessages(String chatId);
+
   Future<void> deleteChat(String chatId);
+
+  Future<Result<ChatConversation>> updateTitle({
+    required String chatId,
+    required String title,
+  });
 }

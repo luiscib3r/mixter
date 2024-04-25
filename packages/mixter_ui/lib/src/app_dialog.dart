@@ -12,6 +12,7 @@ class AppDialog extends StatelessWidget {
     required this.content,
     this.type = AppDialogType.info,
     this.actions = const [],
+    this.minWidth = 300,
     super.key,
   });
 
@@ -19,11 +20,11 @@ class AppDialog extends StatelessWidget {
   final Widget content;
   final AppDialogType type;
   final List<Widget> actions;
+  final double minWidth;
 
   @override
   Widget build(BuildContext context) {
-    const minWidth = 300.0;
-    final width = context.width * 0.25;
+    final width = context.width * 0.30;
 
     return Center(
       child: AppCard(

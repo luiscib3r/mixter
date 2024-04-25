@@ -25,3 +25,12 @@ class ChatLoadMessages extends ChatEvent {
 class ChatDeleteChat extends ChatEvent {
   const ChatDeleteChat();
 }
+
+class ChatUpdateTitle extends ChatEvent {
+  const ChatUpdateTitle(this.title);
+
+  final String title;
+
+  @override
+  List<Object?> get props => [title];
+}

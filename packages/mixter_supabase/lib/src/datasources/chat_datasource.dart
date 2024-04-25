@@ -47,7 +47,7 @@ class ChatDataSource extends SupabaseDataSource {
     } else {
       await request;
     }
-    
+
     return null;
   }
 
@@ -76,5 +76,19 @@ class ChatDataSource extends SupabaseDataSource {
 
   Future<void> deleteChat(String chatId) async {
     await supabase.from('chat_conversation').delete().eq('id', chatId);
+  }
+
+  Future<ChatConversationModel> updateTitle({
+    required String chatId,
+    required String title,
+  }) async {
+    final data = await supabase
+        .from('chat_conversation')
+        .update({'title': title})
+        .eq('id', chatId)
+        .select()
+        .single();
+        
+    return ChatConversationModel.fromJson(data);
   }
 }

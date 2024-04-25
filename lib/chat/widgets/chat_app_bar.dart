@@ -32,7 +32,13 @@ class ChatAppBar extends StatelessWidget {
                     const SizedBox(width: 64),
                     Text(conversation.title ?? l10n.untitled),
                     const SizedBox(width: 12),
-                    const AppIconButton(icon: CupertinoIcons.pencil),
+                    AppIconButton(
+                      icon: CupertinoIcons.pencil,
+                      onPressed: () => UpdateChatTitleDialog.show(
+                        context,
+                        initialTitle: conversation.title,
+                      ),
+                    ),
                   ],
                 ),
               _ => const SizedBox.shrink(),

@@ -32,5 +32,7 @@
   "deleteChatQ": "¿Eliminar chat?",
   "deleteChatQuestion": "¿Estás seguro de que quieres eliminar este chat?",
   "cancel": "Cancelar",
-  "delete": "Eliminar"
+  "delete": "Eliminar",
+  "renameChat": "Renombrar chat",
+  "chatTitle": "Título del chat"
 }

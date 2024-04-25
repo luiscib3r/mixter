@@ -32,5 +32,7 @@
   "deleteChatQ": "Delete chat?",
   "deleteChatQuestion": "Are you sure you want to delete this chat?",
   "cancel": "Cancel",
-  "delete": "Delete"
+  "delete": "Delete",
+  "renameChat": "Rename chat",
+  "chatTitle": "Chat title"
 }
