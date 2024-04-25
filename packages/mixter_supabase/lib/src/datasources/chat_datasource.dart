@@ -5,6 +5,12 @@ import 'package:mixter_supabase/src/models/models.dart';
 class ChatDataSource extends SupabaseDataSource {
   const ChatDataSource();
 
+  Future<void> conversationInit(String id) async {
+    await supabase
+        .from('chat_conversation')
+        .update({'initialized': true}).eq('id', id);
+  }
+
   Future<ChatConversationModel> createChatConversation(String message) async {
     final data =
         await supabase.from('chat_conversation').insert({}).select().single();
@@ -88,7 +94,7 @@ class ChatDataSource extends SupabaseDataSource {
         .eq('id', chatId)
         .select()
         .single();
-        
+
     return ChatConversationModel.fromJson(data);
   }
 }

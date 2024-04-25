@@ -21,6 +21,8 @@ dependencies:
   go_router: ^13.2.4
   intl: ^0.18.1
   ionicons: ^0.2.2
+  mixter_ai:
+    path: packages/mixter_ai
   mixter_bloc:
     path: packages/mixter_bloc
   mixter_hive:

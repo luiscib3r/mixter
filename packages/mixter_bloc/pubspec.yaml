@@ -11,5 +11,6 @@ dev_dependencies:
   very_good_analysis: ^5.1.0
 dependencies:
   bloc: ^8.1.4
+  bloc_concurrency: ^0.2.5
   equatable: ^2.0.5
   formz: ^0.7.0

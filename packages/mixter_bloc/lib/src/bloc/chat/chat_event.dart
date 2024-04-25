@@ -34,3 +34,33 @@ class ChatUpdateTitle extends ChatEvent {
   @override
   List<Object?> get props => [title];
 }
+
+class GenerateChatResponse extends ChatEvent {
+  const GenerateChatResponse({
+    this.initial = false,
+  });
+
+  final bool initial;
+}
+
+class UpdateGenerationMessage extends ChatEvent {
+  const UpdateGenerationMessage(this.message);
+
+  final String message;
+
+  @override
+  List<Object?> get props => [message];
+}
+
+class FinishGenerationMessage extends ChatEvent {
+  const FinishGenerationMessage();
+}
+
+class ChatSendMessage extends ChatEvent {
+  const ChatSendMessage(this.message);
+
+  final String message;
+
+  @override
+  List<Object?> get props => [message];
+}

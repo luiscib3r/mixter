@@ -20,9 +20,29 @@ class ChatBody extends StatelessWidget {
                 Expanded(
                   child: ListView.builder(
                     reverse: true,
-                    itemCount: messages.length,
+                    itemCount: messages.length + (state.isGenerating ? 1 : 0),
                     itemBuilder: (context, index) {
-                      final message = messages[index];
+                      ChatMessage getMessage() {
+                        if (state.isGenerating) {
+                          if (index == 0) {
+                            return ChatMessage(
+                              id: 'generating',
+                              content: state.generatingMessage!,
+                              role: UserRole.assistant,
+                              chatConversationId: state.conversation.id,
+                              userId: state.conversation.userId,
+                              createdAt: DateTime.now(),
+                            );
+                          } else {
+                            return messages[index - 1];
+                          }
+                        } else {
+                          return messages[index];
+                        }
+                      }
+
+                      final message = getMessage();
+
                       return ChatMessageTile(
                         key: ValueKey(message.id),
                         message: message,

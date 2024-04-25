@@ -15,13 +15,17 @@ class ChatData extends ChatState {
   const ChatData({
     required this.conversation,
     required this.messages,
+    this.generatingMessage,
   });
 
   final ChatConversation conversation;
   final List<ChatMessage> messages;
+  final String? generatingMessage;
+
+  bool get isGenerating => generatingMessage != null;
 
   @override
-  List<Object?> get props => [conversation, messages];
+  List<Object?> get props => [conversation, messages, generatingMessage];
 }
 
 class ChatFailure extends ChatState {

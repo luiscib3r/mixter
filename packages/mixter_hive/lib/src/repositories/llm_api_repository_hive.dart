@@ -16,6 +16,13 @@ class LlmApiRepositoryHive extends LlmApiRepository {
       });
 
   @override
+  Future<LlmApi?> getLlmApiProvider() async {
+    final api = await _llmApiDataSource.getLlmApi();
+
+    return api?.entity;
+  }
+
+  @override
   Future<Result<void>> setLlmApi(LlmApi api) => process(() async {
         final model = api.model;
 

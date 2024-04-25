@@ -8,6 +8,10 @@ class ChatRepositorySupabase extends ChatRepository {
   static const _chatDataSource = ChatDataSource();
 
   @override
+  Future<void> conversationInit(String id) =>
+      _chatDataSource.conversationInit(id);
+
+  @override
   Future<Result<ChatConversation>> createChatConversation(String message) =>
       process(() => _chatDataSource.createChatConversation(message));
 
@@ -32,4 +36,22 @@ class ChatRepositorySupabase extends ChatRepository {
     required String title,
   }) =>
       process(() => _chatDataSource.updateTitle(chatId: chatId, title: title));
+
+  @override
+  Future<Result<ChatMessage>> sendMessage({
+    required String chatId,
+    required String message,
+    required UserRole role,
+  }) =>
+      process(
+        () async {
+          final model = await _chatDataSource.createMessage(
+            conversationId: chatId,
+            message: message,
+            role: role,
+          );
+
+          return model!;
+        },
+      );
 }

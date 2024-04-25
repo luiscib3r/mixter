@@ -1,0 +1,17 @@
+name: mixter_ai
+description: Mixter AI.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.3.3
+
+dependencies:
+  langchain: ^0.5.0+1
+  langchain_openai: ^0.5.0+1
+  mixter_bloc:
+    path: ../mixter_bloc
+
+dev_dependencies:
+  test: ^1.24.0
+  very_good_analysis: ^5.1.0

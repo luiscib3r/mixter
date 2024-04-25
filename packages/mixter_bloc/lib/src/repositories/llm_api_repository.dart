@@ -5,6 +5,8 @@ abstract class LlmApiRepository extends BaseRepository {
 
   Future<Result<LlmApi?>> getLlmApi();
 
+  Future<LlmApi?> getLlmApiProvider();
+
   Future<Result<void>> setLlmApi(LlmApi api);
 
   Future<Result<List<LlmApiProviderData>>> getLlmApiProviders() async =>

@@ -35,6 +35,7 @@ ChatsBloc chatsBlocProvider(BuildContext context) {
 
 ChatBloc chatBlocProvider(BuildContext context) {
   return ChatBloc(
+    llmRepository: context.read(),
     chatRepository: context.read(),
   );
 }

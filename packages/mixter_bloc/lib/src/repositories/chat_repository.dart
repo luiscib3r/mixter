@@ -1,7 +1,10 @@
 import 'package:mixter_bloc/mixter_bloc.dart';
+import 'package:mixter_bloc/src/mixter_bloc.dart';
 
 abstract class ChatRepository extends BaseRepository {
   const ChatRepository();
+
+  Future<void> conversationInit(String id);
 
   Future<Result<ChatConversation>> createChatConversation(String message);
 
@@ -16,5 +19,11 @@ abstract class ChatRepository extends BaseRepository {
   Future<Result<ChatConversation>> updateTitle({
     required String chatId,
     required String title,
+  });
+
+  Future<Result<ChatMessage>> sendMessage({
+    required String chatId,
+    required String message,
+    required UserRole role,
   });
 }

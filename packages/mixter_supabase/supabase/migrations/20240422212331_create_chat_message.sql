@@ -1,4 +1,4 @@
-create type "public"."user_role" as enum ('system', 'user', 'assitant');
+create type "public"."user_role" as enum ('system', 'user', 'assistant');
 
 create table "public"."chat_message" (
     "id" uuid not null default gen_random_uuid(),

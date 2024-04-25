@@ -9,8 +9,15 @@ class ChatPage extends GoRoute {
       : super(
           path: _path,
           pageBuilder: (context, state) => CupertinoPage(
-            child: RepositoryProvider(
-              create: chatRepositoryProvider,
+            child: MultiRepositoryProvider(
+              providers: [
+                RepositoryProvider(
+                  create: llmRepositoryProvider,
+                ),
+                RepositoryProvider(
+                  create: chatRepositoryProvider,
+                ),
+              ],
               child: BlocProvider(
                 create: (context) => chatBlocProvider(context)
                   ..load(state.pathParameters['chatId']!),
