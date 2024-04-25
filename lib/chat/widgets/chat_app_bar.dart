@@ -62,7 +62,7 @@ class ChatAppBarLeading extends StatelessWidget {
         const SizedBox(width: 12),
         AppWidgetButton(
           onPressed: () => ChatsPage.open(context),
-          child: Assets.images.logo.image(width: 64),
+          child: Assets.images.logo.image(width: 48),
         ),
       ],
     );

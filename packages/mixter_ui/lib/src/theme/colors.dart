@@ -12,4 +12,6 @@ abstract class AppColors {
   static const textSecondary = Color(0xFF8E8E93);
   static const disabled = CupertinoColors.quaternarySystemFill;
   static const codeBackground = Color(0xFF282C34);
+  static const toolsColor = Color(0xFF393937);
+  static const toolsText = Color(0xFFB7B5A9);
 }

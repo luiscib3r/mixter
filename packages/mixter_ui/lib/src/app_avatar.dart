@@ -5,7 +5,7 @@ class AppAvatar extends StatelessWidget {
   const AppAvatar({
     required this.child,
     this.onPressed,
-    this.size = 48,
+    this.size = 32,
     this.margin = EdgeInsets.zero,
     this.color = AppColors.primary,
     this.tooltip,

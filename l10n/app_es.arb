@@ -34,5 +34,7 @@
   "cancel": "Cancelar",
   "delete": "Eliminar",
   "renameChat": "Renombrar chat",
-  "chatTitle": "Título del chat"
+  "chatTitle": "Título del chat",
+  "copy": "Copiar",
+  "retry": "Reintentar"
 }
