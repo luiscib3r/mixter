@@ -366,6 +366,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.4.0"
+  flutter_highlighter:
+    dependency: "direct main"
+    description:
+      name: flutter_highlighter
+      sha256: "93173afd47a9ada53f3176371755e7ea4a1065362763976d06d6adfb4d946e10"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
   flutter_launcher_icons:
     dependency: "direct dev"
     description:
@@ -494,7 +502,7 @@ packages:
     source: hosted
     version: "13.2.4"
   google_fonts:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: google_fonts
       sha256: b1ac0fe2832c9cc95e5e88b57d627c5e68c223b9657f4b96e1487aa9098c7b82
@@ -525,6 +533,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  highlighter:
+    dependency: transitive
+    description:
+      name: highlighter
+      sha256: "92180c72b9da8758e1acf39a45aa305a97dcfe2fdc8f3d1d2947c23f2772bfbc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
   hive:
     dependency: transitive
     description:
@@ -686,7 +702,7 @@ packages:
     source: hosted
     version: "1.2.0"
   markdown:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: markdown
       sha256: ef2a1298144e3f985cc736b22e0ccdaf188b5b3970648f2d9dc13efd1d9df051

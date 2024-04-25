@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:mixter/app/app.dart';
+import 'package:mixter/chat/chat.dart';
 import 'package:mixter_bloc/mixter_bloc.dart';
 
 class ChatMessageTile extends StatelessWidget {
@@ -67,25 +68,14 @@ class ChatMessageTile extends StatelessWidget {
                               TextSelection selection,
                               SelectionChangedCause? cause,
                             ) {},
+                            builders: {
+                              'code': CodeElementBuilder(),
+                            },
                             styleSheet: MarkdownStyleSheet(
                               p: CupertinoTheme.of(context).textTheme.textStyle,
                               listBullet: CupertinoTheme.of(context)
                                   .textTheme
                                   .textStyle,
-                              code: CupertinoTheme.of(context)
-                                  .textTheme
-                                  .textStyle,
-                              codeblockDecoration: BoxDecoration(
-                                color: AppColors.codeBackground,
-                                border: const Border(
-                                  left: BorderSide(
-                                    color: AppColors.cardBorder,
-                                    width: 4,
-                                  ),
-                                ),
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                              codeblockPadding: const EdgeInsets.all(16),
                             ),
                           ),
                         ),

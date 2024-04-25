@@ -14,14 +14,17 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.5
+  flutter_highlighter: ^0.1.1
   flutter_localizations:
     sdk: flutter
   flutter_markdown: ^0.7.1
   flutter_web_plugins:
     sdk: flutter
   go_router: ^13.2.4
+  google_fonts: ^6.2.1
   intl: ^0.18.1
   ionicons: ^0.2.2
+  markdown: ^7.2.2
   mixter_ai:
     path: packages/mixter_ai
   mixter_bloc:
