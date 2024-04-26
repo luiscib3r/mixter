@@ -12,7 +12,7 @@ class LlmRepositoryAi extends bloc.LlmRepository {
 
   final Future<bloc.LlmApi?> Function() _llmApi;
 
-  Future<ChatOpenAI> _getLlm() async {
+  Future<BaseChatModel> _getLlm() async {
     final llmApi = await _llmApi();
     if (llmApi == null) {
       throw Exception('No LLM API found');
