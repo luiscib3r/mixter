@@ -28,6 +28,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     );
     on<FinishGenerationMessage>(_onFinishGenerationMessage);
     on<ChatSendMessage>(_onSendMessage);
+    on<ChatGenerateTitle>(_onGenerateTitle);
   }
 
   final ChatRepository _chatRepository;
@@ -181,12 +182,16 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
     switch (result) {
       case ResultSuccess(value: final message):
+        final messages = [message, ...st.messages];
         emit(
           ChatData(
             conversation: st.conversation,
-            messages: [message, ...st.messages],
+            messages: messages,
           ),
         );
+        if (messages.length == 2) {
+          add(const ChatGenerateTitle());
+        }
       case ResultFailure():
         add(ChatLoadConversation(chatId: chatId));
     }
@@ -219,6 +224,39 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         add(const GenerateChatResponse());
       case ResultFailure(failure: final failure):
         emit(ChatFailure(failure: failure));
+    }
+  }
+
+  Future<void> _onGenerateTitle(
+    ChatGenerateTitle event,
+    Emitter<ChatState> emit,
+  ) async {
+    if (state is! ChatData) return;
+
+    final chatId = (state as ChatData).conversation.id;
+
+    final titleResult = await _llmRepository.generateChatTitle(
+      (state as ChatData).messages.reversed.toList(),
+    );
+
+    switch (titleResult) {
+      case ResultSuccess(value: final title):
+        final result =
+            await _chatRepository.updateTitle(chatId: chatId, title: title);
+
+        switch (result) {
+          case ResultSuccess(value: final conversation):
+            emit(
+              ChatData(
+                conversation: conversation,
+                messages: (state as ChatData).messages,
+              ),
+            );
+          default:
+            break;
+        }
+      default:
+        break;
     }
   }
 

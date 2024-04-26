@@ -1,6 +1,8 @@
 import 'package:langchain/langchain.dart';
 import 'package:langchain_openai/langchain_openai.dart';
+import 'package:mixter_ai/mixter_ai.dart';
 import 'package:mixter_ai/src/mappers/mappers.dart';
+import 'package:mixter_ai/src/prompts/prompts.dart';
 import 'package:mixter_bloc/mixter_bloc.dart' as bloc;
 
 class LlmRepositoryAi extends bloc.LlmRepository {
@@ -38,8 +40,22 @@ class LlmRepositoryAi extends bloc.LlmRepository {
   @override
   Future<bloc.Result<String>> generateChatTitle(
     List<bloc.ChatMessage> history,
-  ) {
-    // TODO: implement generateChatTitle
-    throw UnimplementedError();
-  }
+  ) =>
+      process(
+        () async {
+          final llm = await _getLlm();
+
+          final prompt =
+              PromptTemplate.fromTemplate(MixterPrompts.generateTitlePrompt);
+
+          final conversation =
+              history.map((e) => '${e.role.name}: ${e.content}').join('\n');
+
+          final chain = prompt | llm | const StringOutputParser();
+
+          final result = await chain.invoke({'conversation': conversation});
+
+          return result.toString();
+        },
+      );
 }

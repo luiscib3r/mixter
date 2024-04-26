@@ -64,3 +64,7 @@ class ChatSendMessage extends ChatEvent {
   @override
   List<Object?> get props => [message];
 }
+
+class ChatGenerateTitle extends ChatEvent {
+  const ChatGenerateTitle();
+}
