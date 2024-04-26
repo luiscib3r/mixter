@@ -12,7 +12,7 @@ class LlmRepositoryAi extends bloc.LlmRepository {
 
   final Future<bloc.LlmApi?> Function() _llmApi;
 
-  Future<BaseChatModel> _getLlm() async {
+  Future<ChatOpenAI> _getLlm() async {
     final llmApi = await _llmApi();
     if (llmApi == null) {
       throw Exception('No LLM API found');
@@ -51,11 +51,15 @@ class LlmRepositoryAi extends bloc.LlmRepository {
           final conversation =
               history.map((e) => '${e.role.name}: ${e.content}').join('\n');
 
-          final chain = prompt | llm | const StringOutputParser();
+          final chain = LLMChain(
+            llm: llm,
+            prompt: prompt,
+            outputParser: const StringOutputParser(),
+          );
 
-          final result = await chain.invoke({'conversation': conversation});
+          final result = await chain.run({'conversation': conversation});
 
-          return result.toString();
+          return result.replaceAll('"', '');
         },
       );
 }
