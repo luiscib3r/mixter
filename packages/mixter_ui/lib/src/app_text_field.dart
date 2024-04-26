@@ -19,6 +19,7 @@ class AppTextField extends StatefulWidget {
     this.value,
     this.decoration,
     this.controller,
+    this.focus,
   });
 
   final bool enabled;
@@ -37,14 +38,15 @@ class AppTextField extends StatefulWidget {
   final String? value;
   final BoxDecoration? decoration;
   final TextEditingController? controller;
+  final FocusNode? focus;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
 }
 
 class _AppTextFieldState extends State<AppTextField> {
-  final focus = FocusNode();
   Color borderColor = AppColors.textFieldBorder;
+  late final focus = widget.focus ?? FocusNode();
   late final controller = widget.controller ?? TextEditingController();
 
   @override
@@ -70,6 +72,7 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   void dispose() {
+    focus.dispose();
     controller.dispose();
     super.dispose();
   }

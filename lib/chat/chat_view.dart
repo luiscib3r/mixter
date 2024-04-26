@@ -7,7 +7,7 @@ class ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const maxWidth = 682.0;
+    const maxWidth = 690.0;
     final width = context.width < maxWidth ? context.width : maxWidth;
 
     return AppScaffold(

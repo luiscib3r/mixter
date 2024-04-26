@@ -15,7 +15,7 @@ class ChatMessageTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const maxWidth = 664.0;
+    const maxWidth = 672.0;
     final width = context.width < maxWidth ? context.width : maxWidth;
 
     return Row(
@@ -23,8 +23,9 @@ class ChatMessageTile extends StatelessWidget {
       children: [
         Column(
           children: [
-            Container(
+            AnimatedContainer(
               width: width,
+              duration: const Duration(milliseconds: 300),
               margin: const EdgeInsets.only(bottom: 16),
               decoration: BoxDecoration(
                 color: message.role == UserRole.user
@@ -90,7 +91,8 @@ class ChatMessageTile extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 16),
-                  if (message.role == UserRole.assistant)
+                  if (message.role == UserRole.assistant &&
+                      message.id != 'generating')
                     ChatToolsWidget(message: message),
                 ],
               ),

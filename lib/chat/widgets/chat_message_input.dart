@@ -11,6 +11,12 @@ class ChatMessageInput extends StatefulWidget {
 
 class _ChatMessageInputState extends State<ChatMessageInput> {
   final controller = TextEditingController();
+  final focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +59,25 @@ class _ChatMessageInputState extends State<ChatMessageInput> {
         child: Column(
           children: [
             BlocBuilder<ChatBloc, ChatState>(
+              buildWhen: (prev, curr) {
+                final loadingCondition =
+                    prev is ChatLoading && curr is ChatData;
+                final generatingCondition = prev is ChatData &&
+                    curr is ChatData &&
+                    prev.isGenerating != curr.isGenerating;
+
+                return loadingCondition || generatingCondition;
+              },
               builder: (context, state) {
+                focusNode.requestFocus();
                 return AppTextField(
+                  focus: focusNode,
                   enabled: state is ChatData && !state.isGenerating,
                   controller: controller,
                   placeholder: '${l10n.messageTo} ${l10n.appName}',
                   decoration: const BoxDecoration(),
                   suffixMode: OverlayVisibilityMode.editing,
+                  inputType: TextInputType.multiline,
                   onSubmit: () {
                     if (controller.text.isNotEmpty) {
                       bloc.sendMessage(controller.text);
