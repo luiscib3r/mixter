@@ -1,17 +1,7 @@
 import 'package:mixter_bloc/src/entities/entities.dart';
 
-part 'llm_api_provider.dart';
 part 'llm_model.dart';
-
-enum LlmApiType {
-  openai,
-}
-
-enum LlmApiProvider {
-  openai,
-  groq,
-  customOpenai,
-}
+part 'llm_provider.dart';
 
 class LlmApi extends Entity {
   const LlmApi({
@@ -19,7 +9,6 @@ class LlmApi extends Entity {
     required this.url,
     required this.type,
     required this.modelId,
-    required this.provider,
     this.apiKey,
   });
 
@@ -27,8 +16,7 @@ class LlmApi extends Entity {
   final String url;
   final String? apiKey;
   final String modelId;
-  final LlmApiType type;
-  final LlmApiProvider provider;
+  final LlmProviderType type;
 
   @override
   List<Object?> get props => [
@@ -37,7 +25,6 @@ class LlmApi extends Entity {
         apiKey,
         modelId,
         type,
-        provider,
       ];
 
   LlmApi copyWith({
@@ -51,7 +38,6 @@ class LlmApi extends Entity {
       apiKey: apiKey ?? this.apiKey,
       modelId: modelId ?? this.modelId,
       type: type,
-      provider: provider,
     );
   }
 }

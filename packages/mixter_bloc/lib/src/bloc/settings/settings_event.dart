@@ -11,10 +11,10 @@ class SettingsLoad extends SettingsEvent {
   const SettingsLoad();
 }
 
-class SettingsSelectApiProvider extends SettingsEvent {
-  const SettingsSelectApiProvider(this.value);
+class SettingsSelectLlmProvider extends SettingsEvent {
+  const SettingsSelectLlmProvider(this.value);
 
-  final LlmApiProviderData value;
+  final LlmProvider value;
 
   @override
   List<Object?> get props => [value];

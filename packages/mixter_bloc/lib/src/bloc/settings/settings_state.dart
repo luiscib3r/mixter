@@ -13,25 +13,22 @@ class SettingsLoading extends SettingsState {
 
 class SettingsData extends SettingsState {
   const SettingsData({
-    required this.apiProviders,
+    required this.llmProviders,
     this.llmModels = const [],
-    this.requiredFields = const [],
     this.llmApi,
   });
 
   final LlmApi? llmApi;
-  final List<LlmApiField> requiredFields;
   final List<LlmModel> llmModels;
-  final List<LlmApiProviderData> apiProviders;
+  final List<LlmProvider> llmProviders;
 
   bool get isValid =>
       (llmApi?.url.isNotEmpty ?? false) &&
       (llmApi?.modelId.isNotEmpty ?? false) &&
-      (!requiredFields.contains(LlmApiField.apiKey) ||
-          (llmApi?.apiKey?.isNotEmpty ?? false));
+      (llmApi?.apiKey?.isNotEmpty ?? false);
 
   @override
-  List<Object?> get props => [llmApi, apiProviders];
+  List<Object?> get props => [llmApi, llmProviders];
 }
 
 class SettingsFailure extends SettingsState {

@@ -12,6 +12,8 @@ dependencies:
   json_annotation: ^4.8.1
   mixter_bloc:
     path: ../mixter_bloc
+  mixter_hive:
+    path: ../mixter_hive
   supabase_flutter: ^2.5.1
 
 dev_dependencies:

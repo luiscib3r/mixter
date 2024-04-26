@@ -13,7 +13,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         _llmApiRepository = llmApiRepository,
         super(const SettingsLoading()) {
     on<SettingsLoad>(_onSettingsLoad);
-    on<SettingsSelectApiProvider>(_onSettingsSelectApiProvider);
+    on<SettingsSelectLlmProvider>(_onSettingsSelectProvider);
     on<SettingsSetUrl>(_onSettingsSetUrl);
     on<SettingsSetApiKey>(_onSettingsSetApiKey);
     on<SettingsSetModelId>(_onSettingsSetModelId);
@@ -35,33 +35,38 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   ) async {
     emit(const SettingsLoading());
 
-    final result = await _llmApiRepository.getLlmApiProviders();
+    final result = await _llmApiRepository.getLlmProviders();
 
     switch (result) {
-      case ResultSuccess(value: final apiProviders):
-        emit(SettingsData(apiProviders: apiProviders));
+      case ResultSuccess(value: final llmProviders):
+        emit(SettingsData(llmProviders: llmProviders));
       case ResultFailure(failure: final failure):
         emit(SettingsFailure(failure: failure));
     }
   }
 
-  void selectApiProvider(LlmApiProviderData value) {
-    add(SettingsSelectApiProvider(value));
+  void selectProvider(LlmProvider value) {
+    add(SettingsSelectLlmProvider(value));
   }
 
-  void _onSettingsSelectApiProvider(
-    SettingsSelectApiProvider event,
+  void _onSettingsSelectProvider(
+    SettingsSelectLlmProvider event,
     Emitter<SettingsState> emit,
   ) {
     if (state is SettingsData) {
       emit(
         SettingsData(
-          apiProviders: (state as SettingsData).apiProviders,
-          llmApi: event.value.buildLlmApi(modelId: ''),
-          llmModels: event.value.availableModels,
-          requiredFields: event.value.requiredFields,
+          llmProviders: (state as SettingsData).llmProviders,
+          llmApi: LlmApi(
+            name: event.value.name,
+            url: event.value.url,
+            type: event.value.type,
+            modelId: '',
+          ),
         ),
       );
+
+      // TODO LOAD MODELS
     }
   }
 
@@ -76,10 +81,9 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     if (state is SettingsData) {
       emit(
         SettingsData(
-          apiProviders: (state as SettingsData).apiProviders,
+          llmProviders: (state as SettingsData).llmProviders,
           llmApi: (state as SettingsData).llmApi?.copyWith(url: event.value),
           llmModels: (state as SettingsData).llmModels,
-          requiredFields: (state as SettingsData).requiredFields,
         ),
       );
     }
@@ -96,10 +100,9 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     if (state is SettingsData) {
       emit(
         SettingsData(
-          apiProviders: (state as SettingsData).apiProviders,
+          llmProviders: (state as SettingsData).llmProviders,
           llmApi: (state as SettingsData).llmApi?.copyWith(apiKey: event.value),
           llmModels: (state as SettingsData).llmModels,
-          requiredFields: (state as SettingsData).requiredFields,
         ),
       );
     }
@@ -116,11 +119,10 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     if (state is SettingsData) {
       emit(
         SettingsData(
-          apiProviders: (state as SettingsData).apiProviders,
+          llmProviders: (state as SettingsData).llmProviders,
           llmApi:
               (state as SettingsData).llmApi?.copyWith(modelId: event.value),
           llmModels: (state as SettingsData).llmModels,
-          requiredFields: (state as SettingsData).requiredFields,
         ),
       );
     }

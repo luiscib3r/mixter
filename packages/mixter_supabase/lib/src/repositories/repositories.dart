@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 export 'auth_repository_supabase.dart';
 export 'chat_repository_supabase.dart';
+export 'llm_api_repository_supabase.dart';
 
 extension ErrorHandlerSupabase on BaseRepository {
   Future<Result<T>> process<T>(Future<T> Function() action) async {

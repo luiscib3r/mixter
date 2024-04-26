@@ -23,9 +23,8 @@ class LlmApiSelector extends StatelessWidget {
           ),
         SettingsData(
           llmApi: final llmApi,
-          apiProviders: final apiProviders,
+          llmProviders: final llmProviders,
           llmModels: final models,
-          requiredFields: final fields,
         ) =>
           Column(
             children: [
@@ -36,7 +35,7 @@ class LlmApiSelector extends StatelessWidget {
                       child: AppTextField(
                         onChanged: bloc.setUrl,
                         placeholder: l10n.apiUrl,
-                        enabled: fields.contains(LlmApiField.url),
+                        enabled: false,
                         value: llmApi.url,
                       ),
                     ),
@@ -88,7 +87,7 @@ class LlmApiSelector extends StatelessWidget {
                           child: AppWidgetButton(
                             onPressed: () => bloc.setModelId(model.id),
                             child: LlmModelTile(
-                              icon: llmApi.provider.icon,
+                              icon: llmApi.type.icon,
                               model: model,
                             ),
                           ),
@@ -100,20 +99,20 @@ class LlmApiSelector extends StatelessWidget {
               if (llmApi == null)
                 Expanded(
                   child: ListView.builder(
-                    itemCount: apiProviders.length,
+                    itemCount: llmProviders.length,
                     itemBuilder: (context, index) {
-                      final apiProvider = apiProviders[index];
+                      final provider = llmProviders[index];
 
                       return SlideInLeft(
                         delay: Duration(milliseconds: index * 100),
                         duration: const Duration(milliseconds: 300),
                         child: AppWidgetButton(
-                          onPressed: () => bloc.selectApiProvider(apiProvider),
+                          onPressed: () => bloc.selectProvider(provider),
                           child: LlmApiTile(
-                            icon: apiProvider.icon,
-                            name: apiProvider.name,
-                            description: apiProvider.description,
-                            url: apiProvider.providerUrl,
+                            icon: provider.icon,
+                            name: provider.name,
+                            description: provider.description,
+                            url: provider.web,
                           ),
                         ),
                       );

@@ -1,35 +1,35 @@
-import 'package:hive/hive.dart';
+import 'dart:convert';
+
+import 'package:json_annotation/json_annotation.dart';
+import 'package:mixter_bloc/mixter_bloc.dart';
 
 part 'llm_api_model.g.dart';
 
-@HiveType(typeId: 1)
-enum LlmApiModelType {
-  @HiveField(0)
-  openai,
-}
+@JsonSerializable(explicitToJson: true)
+class LlmApiModel extends LlmApi {
+  const LlmApiModel({
+    required super.name,
+    required super.url,
+    required super.type,
+    required super.modelId,
+    super.apiKey,
+  });
 
-@HiveType(typeId: 2)
-enum LlmApiProviderModel {
-  @HiveField(0)
-  openai,
-  @HiveField(1)
-  groq,
-  @HiveField(2)
-  customOpenai,
-}
+  factory LlmApiModel.fromEntity(LlmApi entity) => LlmApiModel(
+        name: entity.name,
+        url: entity.url,
+        type: entity.type,
+        modelId: entity.modelId,
+        apiKey: entity.apiKey,
+      );
 
-@HiveType(typeId: 3)
-class LlmApiModel {
-  @HiveField(0)
-  late String name;
-  @HiveField(1)
-  late String url;
-  @HiveField(2)
-  late String? apiKey;
-  @HiveField(3)
-  late String modelId;
-  @HiveField(4)
-  late LlmApiModelType type;
-  @HiveField(5)
-  late LlmApiProviderModel provider;
+  factory LlmApiModel.fromJson(Map<String, dynamic> json) =>
+      _$LlmApiModelFromJson(json);
+
+  factory LlmApiModel.decode(String rawData) =>
+      LlmApiModel.fromJson(json.decode(rawData) as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => _$LlmApiModelToJson(this);
+
+  String encode() => json.encode(toJson());
 }

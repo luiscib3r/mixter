@@ -21,7 +21,7 @@ class LlmApiWidget extends StatelessWidget {
         builder: (context, settings) {
           if (settings is SettingsData && settings.llmApi != null) {
             return LlmApiTile(
-              icon: settings.llmApi!.provider.icon,
+              icon: settings.llmApi!.type.icon,
               name: settings.llmApi!.name,
               description: settings.llmApi!.modelId.isEmpty
                   ? l10n.selectLlmModel
@@ -42,7 +42,7 @@ class LlmApiWidget extends StatelessWidget {
 
               if (state is LlmApiData && state.llmApi != null) {
                 return LlmApiTile(
-                  icon: state.llmApi!.provider.icon,
+                  icon: state.llmApi!.type.icon,
                   name: state.llmApi!.name,
                   description: state.llmApi!.modelId,
                 );

@@ -1,31 +1,34 @@
 import 'package:mixter_bloc/mixter_bloc.dart';
 import 'package:mixter_hive/mixter_hive.dart';
-import 'package:mixter_hive/src/datasources/llm_api_datasource.dart';
-import 'package:mixter_hive/src/mappers/mappers.dart';
 
 class LlmApiRepositoryHive extends LlmApiRepository {
   const LlmApiRepositoryHive();
 
-  static final _llmApiDataSource = LlmApiDataSource();
+  static final _llmApiDataSource = LlmApiLocalDataSource();
 
   @override
   Future<Result<LlmApi?>> getLlmApi() => process(() async {
         final api = await _llmApiDataSource.getLlmApi();
 
-        return api?.entity;
+        return api;
       });
 
   @override
   Future<LlmApi?> getLlmApiProvider() async {
     final api = await _llmApiDataSource.getLlmApi();
 
-    return api?.entity;
+    return api;
   }
 
   @override
   Future<Result<void>> setLlmApi(LlmApi api) => process(() async {
-        final model = api.model;
+        final model = LlmApiModel.fromEntity(api);
 
         await _llmApiDataSource.setLlmApi(model);
       });
+
+  @override
+  Future<Result<List<LlmProvider>>> getLlmProviders() {
+    throw UnimplementedError();
+  }
 }

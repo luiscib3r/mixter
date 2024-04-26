@@ -1,7 +1,6 @@
 import 'package:mixter/app/app.dart';
 import 'package:mixter_ai/mixter_ai.dart';
 import 'package:mixter_bloc/mixter_bloc.dart';
-import 'package:mixter_hive/mixter_hive.dart';
 import 'package:mixter_supabase/mixter_supabase.dart';
 
 AuthRepository authRepositoryProvider(BuildContext context) {
@@ -9,7 +8,7 @@ AuthRepository authRepositoryProvider(BuildContext context) {
 }
 
 LlmApiRepository llmApiRepositoryProvider(BuildContext context) {
-  return const LlmApiRepositoryHive();
+  return const LlmApiRepositorySupabase();
 }
 
 ChatRepository chatRepositoryProvider(BuildContext context) {
