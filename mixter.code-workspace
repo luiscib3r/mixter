@@ -19,9 +19,6 @@
       "path": "packages/mixter_ai"
     },
     {
-      "path": "packages/mixter_agent"
-    },
-    {
       "path": "notebooks"
     }
   ],

@@ -1,3 +1,0 @@
-class ReActOutputParser {
-  const ReActOutputParser();
-}
