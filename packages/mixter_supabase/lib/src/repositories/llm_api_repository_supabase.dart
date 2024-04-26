@@ -32,4 +32,9 @@ class LlmApiRepositorySupabase extends LlmApiRepository {
 
         await _llmApiLocalDataSource.setLlmApi(model);
       });
+
+  @override
+  Future<Result<List<LlmModel>>> getLlmModels(String providerId) => process(
+        () => _llmApiRemoteDataSource.getLlmModels(providerId),
+      );
 }

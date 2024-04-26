@@ -37,7 +37,7 @@ class LlmModelTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      model.id,
+                      model.modelId,
                       style: const TextStyle(color: AppColors.textSecondary),
                     ),
                   ],

@@ -53,20 +53,8 @@ class LlmApiSelector extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
-                if (models.isEmpty)
-                  Row(
-                    children: [
-                      Expanded(
-                        child: AppTextField(
-                          onChanged: bloc.setModelId,
-                          placeholder: l10n.modelId,
-                          value: llmApi.apiKey,
-                        ),
-                      ),
-                    ],
-                  ),
               ],
+              const SizedBox(height: 16),
               if (models.isNotEmpty && llmApi != null)
                 Expanded(
                   child: GridView.builder(
@@ -85,7 +73,7 @@ class LlmApiSelector extends StatelessWidget {
                         child: Container(
                           margin: const EdgeInsets.only(right: 12, bottom: 12),
                           child: AppWidgetButton(
-                            onPressed: () => bloc.setModelId(model.id),
+                            onPressed: () => bloc.setModelId(model.modelId),
                             child: LlmModelTile(
                               icon: llmApi.type.icon,
                               model: model,

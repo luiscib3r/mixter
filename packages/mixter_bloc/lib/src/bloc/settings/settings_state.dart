@@ -28,7 +28,7 @@ class SettingsData extends SettingsState {
       (llmApi?.apiKey?.isNotEmpty ?? false);
 
   @override
-  List<Object?> get props => [llmApi, llmProviders];
+  List<Object?> get props => [llmApi, llmProviders, llmModels];
 }
 
 class SettingsFailure extends SettingsState {

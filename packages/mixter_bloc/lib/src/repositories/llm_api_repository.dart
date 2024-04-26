@@ -10,5 +10,6 @@ abstract class LlmApiRepository extends BaseRepository {
   Future<Result<void>> setLlmApi(LlmApi api);
 
   Future<Result<List<LlmProvider>>> getLlmProviders();
-  
+
+  Future<Result<List<LlmModel>>> getLlmModels(String providerId);
 }

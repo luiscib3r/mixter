@@ -49,10 +49,10 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     add(SettingsSelectLlmProvider(value));
   }
 
-  void _onSettingsSelectProvider(
+  Future<void> _onSettingsSelectProvider(
     SettingsSelectLlmProvider event,
     Emitter<SettingsState> emit,
-  ) {
+  ) async {
     if (state is SettingsData) {
       emit(
         SettingsData(
@@ -66,7 +66,21 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         ),
       );
 
-      // TODO LOAD MODELS
+      final result = await _llmApiRepository.getLlmModels(event.value.id);
+
+      print(result);
+
+      switch (result) {
+        case ResultSuccess(value: final models):
+          emit(
+            SettingsData(
+              llmProviders: (state as SettingsData).llmProviders,
+              llmApi: (state as SettingsData).llmApi,
+              llmModels: models,
+            ),
+          );
+        default:
+      }
     }
   }
 

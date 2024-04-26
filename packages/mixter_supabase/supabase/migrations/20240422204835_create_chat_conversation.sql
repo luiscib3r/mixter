@@ -1,6 +1,6 @@
 create table public.chat_conversation (
     "id" uuid not null default gen_random_uuid(),
-    "title" character varying not null,
+    "title" character varying,
     "initialized" boolean not null default false,
     "user_id" uuid not null default auth.uid(),
     "created_at" timestamp with time zone not null default now()

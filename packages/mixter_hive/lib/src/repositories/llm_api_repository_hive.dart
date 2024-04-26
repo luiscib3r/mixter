@@ -31,4 +31,9 @@ class LlmApiRepositoryHive extends LlmApiRepository {
   Future<Result<List<LlmProvider>>> getLlmProviders() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<Result<List<LlmModel>>> getLlmModels(String providerId) {
+    throw UnimplementedError();
+  }
 }

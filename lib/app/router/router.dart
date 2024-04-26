@@ -10,6 +10,7 @@ import 'package:mixter_bloc/mixter_bloc.dart';
 
 final _authRoutes = [
   ChatsPage.route,
+  ChatPage.route,
   UserPage.route,
   SettingsPage.route,
 ];
