@@ -1,1 +1,3 @@
-class ReActChatFormatter {}
+class ReActChatFormatter {
+  const ReActChatFormatter();
+}

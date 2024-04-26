@@ -25,11 +25,13 @@ Future<void> main() async {
   final agent = ReActAgent(
     systemPrompt: systemPrompt,
     llm: llm,
-    formatter: ReActChatFormatter(),
-    parser: ReActOutputParser(),
   );
 
-  final response = await agent.chat('What is 2123 * 215123');
+  // final response = await agent.chat('What is 2123 * 215123');
+  // print('\nRESPONSE');
+  // print(response);
+
+  final response2 = await agent.chat('Who is the president of LCL Company?');
   print('\nRESPONSE');
-  print(response);
+  print(response2);
 }

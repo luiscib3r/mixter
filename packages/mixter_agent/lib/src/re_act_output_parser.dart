@@ -1,1 +1,3 @@
-class ReActOutputParser {}
+class ReActOutputParser {
+  const ReActOutputParser();
+}

@@ -43,4 +43,3 @@ Answer: [your answer here (In the same language as the user's question)]
 ## Current Conversation
 
 Below is the current conversation consisting of interleaving human and assistant messages.
-{input}
