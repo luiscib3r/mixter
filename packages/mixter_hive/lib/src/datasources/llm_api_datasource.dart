@@ -14,12 +14,19 @@ class LlmApiLocalDataSource extends HiveDataSource {
 
     final secureKey = base64Url.decode(await key);
 
-    await Hive.deleteBoxFromDisk('llmApi');
+    try {
+      _box = await Hive.openBox<String>(
+        'llmApi',
+        encryptionCipher: HiveAesCipher(secureKey),
+      );
+    } catch (_) {
+      await Hive.deleteBoxFromDisk('llmApi');
 
-    _box = await Hive.openBox<String>(
-      'llmApiV2',
-      encryptionCipher: HiveAesCipher(secureKey),
-    );
+      _box = await Hive.openBox<String>(
+        'llmApi',
+        encryptionCipher: HiveAesCipher(secureKey),
+      );
+    }
 
     return _box!;
   }
