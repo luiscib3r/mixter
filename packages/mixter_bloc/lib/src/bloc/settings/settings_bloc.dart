@@ -68,8 +68,6 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
 
       final result = await _llmApiRepository.getLlmModels(event.value.id);
 
-      print(result);
-
       switch (result) {
         case ResultSuccess(value: final models):
           emit(

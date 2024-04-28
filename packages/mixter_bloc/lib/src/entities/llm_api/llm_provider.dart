@@ -5,6 +5,7 @@ part of 'llm_api.dart';
 enum LlmProviderType {
   groq,
   openai,
+  ollama,
 }
 
 class LlmProvider extends Entity {

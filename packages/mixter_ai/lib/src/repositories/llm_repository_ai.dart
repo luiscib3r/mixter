@@ -59,7 +59,7 @@ class LlmRepositoryAi extends bloc.LlmRepository {
 
           final result = await chain.run({'conversation': conversation});
 
-          return result.replaceAll('"', '');
+          return result.replaceAll('"', '').split('\n').first;
         },
       );
 }

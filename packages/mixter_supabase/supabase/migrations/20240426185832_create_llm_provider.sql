@@ -1,4 +1,4 @@
-create type public.llm_provider_type as enum ('openai', 'groq');
+create type public.llm_provider_type as enum ('openai', 'groq', 'ollama');
 
 create table public.llm_provider (
     "id" uuid not null default gen_random_uuid(),

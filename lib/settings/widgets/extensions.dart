@@ -5,6 +5,7 @@ extension LlmProviderX on LlmProvider {
   Widget get icon => switch (type) {
         LlmProviderType.openai => Assets.images.openai.image(),
         LlmProviderType.groq => Assets.images.groq.image(),
+        LlmProviderType.ollama => Assets.images.ollama.image(),
       };
 }
 
@@ -12,5 +13,6 @@ extension LlmApiProviderTypeX on LlmProviderType {
   Widget get icon => switch (this) {
         LlmProviderType.openai => Assets.images.openai.image(),
         LlmProviderType.groq => Assets.images.groq.image(),
+        LlmProviderType.ollama => Assets.images.ollama.image(),
       };
 }

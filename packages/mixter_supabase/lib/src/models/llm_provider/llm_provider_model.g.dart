@@ -31,4 +31,5 @@ Map<String, dynamic> _$LLmProviderModelToJson(LLmProviderModel instance) =>
 const _$LlmProviderTypeEnumMap = {
   LlmProviderType.groq: 'groq',
   LlmProviderType.openai: 'openai',
+  LlmProviderType.ollama: 'ollama',
 };

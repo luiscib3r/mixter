@@ -24,25 +24,34 @@ class ChatAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const ChatAppBarLeading(),
-          BlocBuilder<ChatBloc, ChatState>(
-            builder: (context, state) => switch (state) {
-              ChatData(conversation: final conversation) => Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const SizedBox(width: 64),
-                    Text(conversation.title ?? l10n.untitled),
-                    const SizedBox(width: 12),
-                    AppIconButton(
-                      icon: CupertinoIcons.pencil,
-                      onPressed: () => UpdateChatTitleDialog.show(
-                        context,
-                        initialTitle: conversation.title,
+          Expanded(
+            child: BlocBuilder<ChatBloc, ChatState>(
+              builder: (context, state) => switch (state) {
+                ChatData(conversation: final conversation) => Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          conversation.title ?? l10n.untitled,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              _ => const SizedBox.shrink(),
-            },
+                      const SizedBox(width: 12),
+                      AppIconButton(
+                        icon: CupertinoIcons.pencil,
+                        onPressed: () => UpdateChatTitleDialog.show(
+                          context,
+                          initialTitle: conversation.title,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                    ],
+                  ),
+                _ => const SizedBox.shrink(),
+              },
+            ),
           ),
           const ChatAppBarTrail(showTrash: true),
         ],
