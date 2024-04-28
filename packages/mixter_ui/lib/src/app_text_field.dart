@@ -20,6 +20,7 @@ class AppTextField extends StatefulWidget {
     this.decoration,
     this.controller,
     this.focus,
+    this.autofocus = false,
   });
 
   final bool enabled;
@@ -39,6 +40,7 @@ class AppTextField extends StatefulWidget {
   final BoxDecoration? decoration;
   final TextEditingController? controller;
   final FocusNode? focus;
+  final bool autofocus;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -80,6 +82,7 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
     return CupertinoTextField(
+      autofocus: widget.autofocus,
       controller: controller,
       focusNode: focus,
       obscureText: widget.obscureText,

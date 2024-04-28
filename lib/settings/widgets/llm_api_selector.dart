@@ -35,7 +35,7 @@ class LlmApiSelector extends StatelessWidget {
                       child: AppTextField(
                         onChanged: bloc.setUrl,
                         placeholder: l10n.apiUrl,
-                        enabled: false,
+                        enabled: llmApi.type == LlmProviderType.ollama,
                         value: llmApi.url,
                       ),
                     ),
@@ -53,6 +53,22 @@ class LlmApiSelector extends StatelessWidget {
                     ),
                   ],
                 ),
+                if (llmApi.type == LlmProviderType.ollama) ...[
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: AppTextField(
+                          key: ValueKey(llmApi.modelId),
+                          autofocus: llmApi.modelId.isNotEmpty,
+                          onChanged: bloc.setModelId,
+                          placeholder: l10n.modelId,
+                          value: llmApi.modelId,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ],
               const SizedBox(height: 16),
               if (models.isNotEmpty && llmApi != null)

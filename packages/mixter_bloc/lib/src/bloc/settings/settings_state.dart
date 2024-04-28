@@ -25,7 +25,8 @@ class SettingsData extends SettingsState {
   bool get isValid =>
       (llmApi?.url.isNotEmpty ?? false) &&
       (llmApi?.modelId.isNotEmpty ?? false) &&
-      (llmApi?.apiKey?.isNotEmpty ?? false);
+      (llmApi?.apiKey?.isNotEmpty ??
+          false || llmApi?.type == LlmProviderType.ollama);
 
   @override
   List<Object?> get props => [llmApi, llmProviders, llmModels];

@@ -73,6 +73,14 @@ class ChatMessageTile extends StatelessWidget {
                               'code': CodeElementBuilder(),
                             },
                             styleSheet: MarkdownStyleSheet(
+                              h1: AppTexts.title
+                                  .copyWith(color: AppColors.white),
+                              h2: AppTexts.subtitle
+                                  .copyWith(color: AppColors.white),
+                              h3: AppTexts.subtitle
+                                  .copyWith(color: AppColors.white),
+                              h4: AppTexts.subtitle
+                                  .copyWith(color: AppColors.white),
                               p: CupertinoTheme.of(context).textTheme.textStyle,
                               listBullet: CupertinoTheme.of(context)
                                   .textTheme
