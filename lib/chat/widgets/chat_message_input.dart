@@ -69,7 +69,10 @@ class _ChatMessageInputState extends State<ChatMessageInput> {
                 return loadingCondition || generatingCondition;
               },
               builder: (context, state) {
-                focusNode.requestFocus();
+                if (!AppResponsive.isMobile(context)) {
+                  focusNode.requestFocus();
+                }
+
                 return AppTextField(
                   focus: focusNode,
                   enabled: state is ChatData && !state.isGenerating,

@@ -15,6 +15,9 @@ class AppResponsive extends StatelessWidget {
   final WidgetBuilder? tabletBuilder;
   final WidgetBuilder? desktopBuilder;
 
+  static bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width <= mobile;
+
   static T value<T>(
     BuildContext context,
     T defaultValue, {
