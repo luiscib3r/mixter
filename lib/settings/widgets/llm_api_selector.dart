@@ -77,8 +77,14 @@ class LlmApiSelector extends StatelessWidget {
                     shrinkWrap: true,
                     itemCount: models.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: context.width < 1000 ? 2 : 3,
-                      childAspectRatio: 2.2,
+                      crossAxisCount: AppResponsive.value(
+                        context,
+                        3,
+                        mobileValue: 1,
+                        tabletValue: 2,
+                      ),
+                      childAspectRatio:
+                          AppResponsive.value(context, 2.2, mobileValue: 3.2),
                     ),
                     itemBuilder: (context, index) {
                       final model = models[index];

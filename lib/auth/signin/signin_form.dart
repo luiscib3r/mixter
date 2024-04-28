@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:mixter/app/app.dart';
 import 'package:mixter_bloc/mixter_bloc.dart';
 
@@ -10,6 +11,11 @@ class SignInForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final bloc = context.read<SignInBloc>();
+
+    void submit() {
+      TextInput.finishAutofillContext();
+      bloc.submit();
+    }
 
     return BlocBuilder<SignInBloc, SignInState>(
       builder: (context, state) {
@@ -36,7 +42,7 @@ class SignInForm extends StatelessWidget {
                 inputType: TextInputType.emailAddress,
                 autofillHints: const [AutofillHints.email],
                 onChanged: bloc.emailChanged,
-                onSubmit: isValid ? bloc.submit : null,
+                onSubmit: isValid ? submit : null,
               ),
               const SizedBox(height: 18),
               AppPasswordField(
@@ -44,14 +50,14 @@ class SignInForm extends StatelessWidget {
                 placeholder: l10n.password,
                 autofillHints: const [AutofillHints.password],
                 onChanged: bloc.passwordChanged,
-                onSubmit: isValid ? bloc.submit : null,
+                onSubmit: isValid ? submit : null,
               ),
               const SizedBox(height: 18),
               Row(
                 children: [
                   Expanded(
                     child: AppButton(
-                      onPressed: () => isValid ? bloc.submit() : null,
+                      onPressed: isValid ? submit : null,
                       text: l10n.signIn,
                     ),
                   ),

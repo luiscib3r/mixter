@@ -7,7 +7,7 @@ class SettingsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final width = context.width * 0.8;
+    final width = context.width * 0.9;
 
     return Column(
       children: [

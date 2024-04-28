@@ -16,7 +16,7 @@ class ChatMessageTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const maxWidth = 672.0;
-    final width = context.width < maxWidth ? context.width : maxWidth;
+    final width = context.width < maxWidth ? context.width * 0.95 : maxWidth;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

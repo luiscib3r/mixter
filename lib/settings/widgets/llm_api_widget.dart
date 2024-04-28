@@ -11,7 +11,7 @@ class LlmApiWidget extends StatelessWidget {
     final bloc = context.read<SettingsBloc>();
 
     return Container(
-      height: 96,
+      height: 102,
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.cardBorder),
